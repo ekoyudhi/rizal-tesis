@@ -1,5 +1,4 @@
 from socket import timeout
-from tkinter.messagebox import RETRY
 from weakref import WeakKeyDictionary
 
 from ._builtin import Page, WaitPage
