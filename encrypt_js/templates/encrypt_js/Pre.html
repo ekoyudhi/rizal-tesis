@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Pre
+{% endblock %}
+
+{% block content %}
+
+    <p>
+    Silahakan pilih waktu untuk memainkan permainan ini<br><br>
+			
+            <input class="form-check-input" type="radio" id="id_waktu-0" name="waktu" value="30">
+            <label for="id_waktu-0">30 Detik [basis omset 1,000,000 - basis biaya 500,000]</label><br><br>
+			
+            <input class="form-check-input" type="radio" id="id_waktu-1" name="waktu" value="45">
+            <label for="id_waktu-1">45 Detik [basis omset 750,000 - basis biaya 375,000]</label><br><br>
+			
+            <input class="form-check-input" type="radio" id="id_waktu-2" name="waktu" value="60">
+            <label for="id_waktu-2">60 Detik [basis omset 500,000 - basis biaya 250,000]</label><br><br>
+    </p>
+    {% next_button %}
+
+{% endblock %}

@@ -112,9 +112,19 @@ td {
     display: grid;
     grid-template-columns: 6em auto;
     grid-template-rows: 1;
-    grid-column-gap: 1vw
+    grid-column-gap: 1vw;
 }
 
+.table-ku {
+  width: 50%;
+  border: 0px white;
+}
+
+.table-ku tbody tr td {
+  font-size: 0.8vw;
+  text-align: left;
+  border: 0px white;
+}
 </style>
 {% endblock %}
 
@@ -127,7 +137,18 @@ td {
 {% block content %}
 <input type="hidden" name="performance" id="performance">
 <input type="hidden" name="mistakes" id="mistakes">
-
+<input type="hidden" name="base_omset" id="base_omset" value="{{ participant.vars.base_omset }}">
+<input type="hidden" name="base_biaya" id="base_biaya" value="{{ participant.vars.base_biaya }}">
+<input type="hidden" name="total_omset" id="total_omset">
+<input type="hidden" name="total_biaya" id="total_biaya">
+<table class="table-ku">
+  <tr>
+    <td>Omset</td><td>:</td><td><input type="text" name="view_omset" id="view_omset" disabled /></td>
+  </tr>
+  <tr>
+    <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled /></td>
+  </tr>
+</table>
 <div class="test" id="hide_task">
 
 <!-- <form id="test_frm"> -->
@@ -147,7 +168,7 @@ td {
 <br><br>
 <div class="button-container">
     
-<input type="button" onclick="myFunction()" value="Submit">
+<input type="button" class="btn btn-primary" onclick="myFunction()" value="Submit">
 <div class="otree-form-errors" id="error-form"></div>
 </div>
 
@@ -190,8 +211,20 @@ td {
   for (var i=0; i< letters_per_word; i++) {
     document.getElementById("task_letter_"+i).innerText=word[i];
   }
-  document.getElementById("mistakes").value = 0;
-  document.getElementById("performance").value = 0;
+  //document.getElementById("mistakes").value = 0;
+  //document.getElementById("performance").value = 0;
+  document.getElementById("total_omset").value = Number(document.getElementById("base_omset").value)
+  document.getElementById("total_biaya").value = Number(document.getElementById("base_biaya").value)
+  document.getElementById("view_omset").value = thousands_separators(Number(document.getElementById("base_omset").value))
+  document.getElementById("view_biaya").value = thousands_separators(Number(document.getElementById("base_biaya").value))
+
+  function thousands_separators(num)
+  {
+    var num_parts = num.toString().split(".");
+    num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    return num_parts.join(".");
+  }
+
 function myFunction() { 
     errors=checkSolution();
      
@@ -200,6 +233,14 @@ function myFunction() {
       document.getElementById("performance").value = temp;
       document.getElementById("error-form").style.display = "none";
       
+      //isi omset dan biaya
+      var temp_omset = Number(document.getElementById("total_omset").value) + Number(document.getElementById("base_omset").value);
+      var temp_biaya = Number(document.getElementById("total_biaya").value) + Number(document.getElementById("base_biaya").value);
+      document.getElementById("total_omset").value = temp_omset;
+      document.getElementById("total_biaya").value = temp_biaya;
+      document.getElementById("view_omset").value = thousands_separators(temp_omset);
+      document.getElementById("view_biaya").value = thousands_separators(temp_biaya);
+
       dict=genNewDict();
       shuffle(legend_letters)
       for (var i = 0; i <= 25; i++) {
@@ -219,6 +260,11 @@ function myFunction() {
       document.getElementById("mistakes").value = temp;
       document.getElementById("error-form").innerText = "There are "+errors+" mistakes.";
       document.getElementById("error-form").style.display = "block";
+
+      //isi biaya salah
+      var temp_biaya = Number(document.getElementById("total_biaya").value) + (errors * Number(document.getElementById("base_biaya").value) / 5);
+      document.getElementById("total_biaya").value = temp_biaya;
+      document.getElementById("view_biaya").value = thousands_separators(temp_biaya);
   }
 }
 

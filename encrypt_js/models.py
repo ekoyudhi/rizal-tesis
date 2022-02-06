@@ -47,6 +47,8 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    performance = models.IntegerField(initial=0, blank=True)
-    mistakes = models.IntegerField(initial=0, blank=True)
-
+    performance = models.IntegerField(initial=0, blank=False)
+    mistakes = models.IntegerField(initial=0, blank=False)
+    waktu = models.IntegerField(widget=widgets.RadioSelect, label='Waktu', choices=[[30,'30 Menit'],[45,'45 Menit'],[60,'60 Menit']])
+    total_omset = models.FloatField(initial=0, blank=False)
+    total_biaya = models.FloatField(initial=0, blank=False)
