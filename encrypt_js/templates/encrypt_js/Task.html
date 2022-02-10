@@ -109,10 +109,12 @@ td {
 }
 
 .button-container{
-    display: grid;
+    display: auto;
+    /*
     grid-template-columns: 6em auto;
     grid-template-rows: 1;
     grid-column-gap: 1vw;
+    */
 }
 
 .table-ku {
@@ -143,10 +145,10 @@ td {
 <input type="hidden" name="total_biaya" id="total_biaya">
 <table class="table-ku">
   <tr>
-    <td>Omset</td><td>:</td><td><input type="text" name="view_omset" id="view_omset" disabled /></td>
+    <td>Omset</td><td>:</td><td><input type="text" name="view_omset" id="view_omset" disabled />EU</td>
   </tr>
   <tr>
-    <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled /></td>
+    <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled />EU</td>
   </tr>
 </table>
 <div class="test" id="hide_task">
@@ -162,13 +164,12 @@ td {
         {% for l in task_list%}
                 <input class="task-code" id="task_code_{{l}}" type="number">
         {% endfor %}
+      <input id="btnSubmit" type="button" class="btn btn-primary" onclick="myFunction()" value="Submit">
 </div>
 </div>
 
-<br><br>
+<br>
 <div class="button-container">
-    
-<input type="button" class="btn btn-primary" onclick="myFunction()" value="Submit">
 <div class="otree-form-errors" id="error-form"></div>
 </div>
 
@@ -214,16 +215,26 @@ td {
   //document.getElementById("mistakes").value = 0;
   //document.getElementById("performance").value = 0;
   document.getElementById("total_omset").value = Number(document.getElementById("base_omset").value)
-  document.getElementById("total_biaya").value = Number(document.getElementById("base_biaya").value)
+  document.getElementById("total_biaya").value = Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value)
   document.getElementById("view_omset").value = thousands_separators(Number(document.getElementById("base_omset").value))
-  document.getElementById("view_biaya").value = thousands_separators(Number(document.getElementById("base_biaya").value))
+  document.getElementById("view_biaya").value = thousands_separators(Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value))
 
+  $('#task_code_0').focus();
+  
   function thousands_separators(num)
   {
     var num_parts = num.toString().split(".");
     num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     return num_parts.join(".");
   }
+
+  $('#task_code_0').keypress(function(event){
+    var keycode = (event.keyCode ? event.keyCode : event.which);
+    if(keycode == '13'){
+      //alert('You pressed a "enter" key in textbox');
+      myFunction()
+    }
+  });
 
 function myFunction() { 
     errors=checkSolution();
@@ -235,7 +246,8 @@ function myFunction() {
       
       //isi omset dan biaya
       var temp_omset = Number(document.getElementById("total_omset").value) + Number(document.getElementById("base_omset").value);
-      var temp_biaya = Number(document.getElementById("total_biaya").value) + Number(document.getElementById("base_biaya").value);
+      //var temp_biaya = Number(document.getElementById("total_biaya").value) + Number(document.getElementById("base_biaya").value);
+      var temp_biaya = Number(document.getElementById("base_biaya").value) / 100 * temp_omset
       document.getElementById("total_omset").value = temp_omset;
       document.getElementById("total_biaya").value = temp_biaya;
       document.getElementById("view_omset").value = thousands_separators(temp_omset);
@@ -262,10 +274,12 @@ function myFunction() {
       document.getElementById("error-form").style.display = "block";
 
       //isi biaya salah
-      var temp_biaya = Number(document.getElementById("total_biaya").value) + (errors * Number(document.getElementById("base_biaya").value) / 5);
-      document.getElementById("total_biaya").value = temp_biaya;
-      document.getElementById("view_biaya").value = thousands_separators(temp_biaya);
+      //var temp_biaya = Number(document.getElementById("total_biaya").value) + (errors * Number(document.getElementById("base_biaya").value) / 5);
+      //document.getElementById("total_biaya").value = temp_biaya;
+      //document.getElementById("view_biaya").value = thousands_separators(temp_biaya);
   }
+
+  $('#task_code_0').focus();
 }
 
 function checkSolution() {

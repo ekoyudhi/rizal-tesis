@@ -19,7 +19,7 @@ class Constants(BaseConstants):
     num_rounds = 1
     name_in_url = 'encrypt_js'
 
-    letters_per_word = 5
+    letters_per_word = 1
 
     use_timeout = True
     seconds_per_period = 60

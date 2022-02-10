@@ -1,6 +1,3 @@
-from socket import timeout
-from weakref import WeakKeyDictionary
-
 from ._builtin import Page, WaitPage
 from .models import Constants, Player, Group
 
@@ -13,14 +10,14 @@ class Pre(Page):
         waktu = self.player.waktu
         self.participant.vars['waktu'] = waktu
         if waktu == 30:
-            self.participant.vars['base_omset'] = 1000000
-            self.participant.vars['base_biaya'] = 500000
+            self.participant.vars['base_omset'] = 10000000
+            self.participant.vars['base_biaya'] = 30
         elif waktu == 45:
-            self.participant.vars['base_omset'] = 750000
-            self.participant.vars['base_biaya'] = 375000
+            self.participant.vars['base_omset'] = 5000000
+            self.participant.vars['base_biaya'] = 45
         elif waktu == 60:
-            self.participant.vars['base_omset'] = 500000
-            self.participant.vars['base_biaya'] = 250000
+            self.participant.vars['base_omset'] = 2000000
+            self.participant.vars['base_biaya'] = 60
         else:
             self.participant.vars['base_omset'] = 0
             self.participant.vars['base_biaya'] = 0
