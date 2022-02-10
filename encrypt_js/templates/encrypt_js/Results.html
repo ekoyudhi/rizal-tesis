@@ -8,8 +8,9 @@
 {% block content %}
 
     <p>Waktu bermain {{player.waktu}} Detik dan jawaban yang benar adalah {{player.performance}}
-        <br>Total omset : <span id="omset"></span>
-        <br>Total biaya : <span id="biaya"></span>
+        <br>Total omset : <span id="omset"></span> EU
+        <br>Total biaya : <span id="biaya"></span> EU
+        <br>Laba : <span id="laba"></span> EU
 
     </p>
 
@@ -22,6 +23,7 @@
     }
     document.getElementById("omset").textContent = thousands_separators({{player.total_omset}});
     document.getElementById("biaya").textContent = thousands_separators({{player.total_biaya}});
+    document.getElementById("laba").textContent = thousands_separators({{player.total_omset}} - {{player.total_biaya}})
 
 </script>
 {% endblock %}

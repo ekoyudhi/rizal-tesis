@@ -145,10 +145,10 @@ td {
 <input type="hidden" name="total_biaya" id="total_biaya">
 <table class="table-ku">
   <tr>
-    <td>Omset</td><td>:</td><td><input type="text" name="view_omset" id="view_omset" disabled />EU</td>
+    <td>Omset</td><td>:</td><td><input type="text" name="view_omset" id="view_omset" disabled /> EU</td>
   </tr>
   <tr>
-    <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled />EU</td>
+    <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled /> EU</td>
   </tr>
 </table>
 <div class="test" id="hide_task">
@@ -214,13 +214,13 @@ td {
   }
   //document.getElementById("mistakes").value = 0;
   //document.getElementById("performance").value = 0;
-  document.getElementById("total_omset").value = Number(document.getElementById("base_omset").value)
-  document.getElementById("total_biaya").value = Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value)
-  document.getElementById("view_omset").value = thousands_separators(Number(document.getElementById("base_omset").value))
-  document.getElementById("view_biaya").value = thousands_separators(Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value))
+  document.getElementById("total_omset").value = 0; //Number(document.getElementById("base_omset").value)
+  document.getElementById("total_biaya").value = 0; //Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value)
+  document.getElementById("view_omset").value = 0; //thousands_separators(Number(document.getElementById("base_omset").value))
+  document.getElementById("view_biaya").value = 0; //thousands_separators(Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value))
 
   $('#task_code_0').focus();
-  
+
   function thousands_separators(num)
   {
     var num_parts = num.toString().split(".");
