@@ -1,0 +1,22 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Lapor Pajak
+{% endblock %}
+
+{% block content %}
+<p>
+    Dari penghasilan yang Anda dapatkan dari game sebelumnya Anda diharapkan melaporkan pajak dengan jujur dengan form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis
+</p>
+<p>
+    Pelaporan SPT
+    <br>Periode : XXX
+    <br><br>
+    Masukkan omset&emsp;&emsp;&emsp;&emsp;: <input type="number" id="omset_input" name="omset_input" /> EU<br><br>
+    Jumlah pajak terutang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled />
+    <br><br><br>
+    Jumlah payoff yang mungkin didapat pada periode ini : <input type="text" id="total_payoff" name="total_payoff" disabled /><br>
+</p>
+{% next_button %}
+{% endblock %}

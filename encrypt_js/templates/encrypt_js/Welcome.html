@@ -1,0 +1,23 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+{% endblock %}
+
+{% block title %}
+    Welcome
+{% endblock %}
+
+{% block content %}
+    <p>
+      Selamat datang para peserta penelitian yang saya hormati. Terima kasih atas partisipasi dalam penelitian ini. Penelitian ini telah mendapat ethical clearence dari UGM dengan nomor : ………. Data Anda dijamin keamanannya, analisis data akan dilakukan secara anonim. Meskipun penelitian ini bersifat online, diharapkan masing-masing peserta tidak berkomunikasi satu sama lain, jika ada pertanyaan dapat disampaikan ke peneliti melalui wa di wa.me/628569041762.
+    </p>
+    <p>
+      Penelitian ini terdiri dari tiga bagian yaitu pengantar, game, dan survey singkat. Untuk peserta yang menyelesesaikan semua bagian akan minimal mendapatkan participant fee sebesar Rp25.000 serta tambahan kurang lebih Rp25.000 s.d Rp150.000 tergantung dari kesempatan yang ada dan keputusan yang Anda lakukan. Pastikan Anda memahami petunjuk karena fee tambahan bergantung dari instruksi yang ada.
+    </p>
+    <p>
+      Dengan menekan tombol next artinya Anda telah menyetujui untuk mengikuti penelitian ini.
+    </p>
+    {% next_button %}
+
+{% endblock %}

@@ -1,0 +1,48 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+{% endblock %}
+
+{% block title %}
+    Pengantar
+{% endblock %}
+
+{% block content %}
+    <h4>Baca dan pahami cerita berikut untuk menjawab pertanyaan selanjutnya</h4>
+    <p>
+        Info Umum
+	Anda adalah warga negara Nusa Makmur, sebuah negara yang terletak di Asia Tenggara dengan luas wilayah 1,904,569 km2 serta dengan jumlah penduduk tahun 2020 sebanyak 273,5 juta jiwa. Untuk membiayai negara, pemerintah Nusa Makmur mewajibkan setiap warga negara yang memiliki usaha untuk membayar pajak. Pemungutan pajak dilakukan oleh otoritas pajak nusa makmur.
+    </p>
+    <p>
+        Nusa makmur menetapkan perhitungan pajak dengan cara yaitu:
+        <ul>
+            <li>tarif pajak dikali dengan omset (bukan dari laba) sebagai dasar pengenaan pajak.
+            </li>
+            <li>Tarif pajak telah diturunkan daripada periode pajak sebelumnya yaitu dari 1% ke 0.5%.
+            </li>
+        </ul>
+    </p>
+    <p>
+        Untuk saat ini, Anda sebagai warga negara Nusa Makmur akan membayar dan melaporkan pajak dalam 10 periode.
+    </p>
+    <p>
+        Sebagai bentuk pengawasan atas pembayaran pajak maka otoritas pajak Nusa Makmur diwajibkan melaksanakan pemeriksaan terhadap 30% dari total pelaporan, yaitu 3 dari 10 periode pelaporan pajak akan diperiksa secara acak di setiap akhir periode pembayaran dan pelaporan pajak.
+    </p>
+	<p>Atas pemeriksaan yang dilakukan, jika terdapat penggelapan pajak atau dalam hal ini omset yang dilaporkan tidak sesuai dengan omset yang sebenarnya maka Nusa Makmur akan menetapkan denda sebesar selisih pajak yang kurang dibayar ditambah 200% dari pajak yang sebenarnya.
+    </p>
+    <p>
+        Isilah pertanyaan berikut terkait dengan informasi di atas dengan benar untuk dapat melanjutkan ke tahap berikutnya
+        <br>Pilih jawaban yang benar
+    </p>
+    {{formfield 'q1'}}
+    {{formfield 'q2'}}
+    {{formfield 'q3'}}
+    {{formfield 'q4'}}
+    {{formfield 'q5'}}
+    {{formfield 'q6'}}
+    {{formfield 'q7'}}
+    {{formfield 'q8'}}
+    {% next_button %}
+
+{% endblock %}
