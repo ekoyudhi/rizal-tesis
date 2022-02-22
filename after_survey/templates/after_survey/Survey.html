@@ -1,0 +1,24 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Feedback
+{% endblock %}
+
+{% block content %}
+<p>Terima kasih telah menyelesaikan semua round. Jawab pertanyaan berikut untuk menyelesaikan permainan ini.</p>
+{{ formfield 's1' }}
+{{ formfield 's2' }}
+{{ formfield 's3' }}
+{{ formfield 's4' }}
+{{ formfield 's5' }}
+{{ formfield 's6' }}
+{{ formfield 's7' }}
+{{ formfield 's8' }}
+{{ formfield 's9' }}
+{{ formfield 's10' }}
+{{ formfield 's11' }}
+    {% next_button %}
+{% endblock %}
+
+

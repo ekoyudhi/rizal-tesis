@@ -1,0 +1,18 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Proses Payoff
+{% endblock %}
+
+{% block content %}
+<p>Klik Next untuk melakukan penghitungan payoff</p>
+<input type="hidden" id="periode_terpilih" name="periode_terpilih" />
+<input type="hidden" id="payoff_real" name="payoff_real" />
+    {% next_button %}
+
+<script>
+    document.getElementById("periode_terpilih").value = {{periode_terpilih}}
+    document.getElementById("payoff_real").value = {{payoff_real}}
+</script>
+{% endblock %}

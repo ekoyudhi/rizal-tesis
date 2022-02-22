@@ -1,0 +1,78 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+{% block styles %}
+<style type="text/css">
+table.lap, td.lap, th.lap {
+    border: 1px solid black;
+  }
+  
+  table.lap {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 24px;
+  }
+  
+  th.lap {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.lap {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: left;
+    padding: 24px;
+  }
+</style>
+{% endblock %}
+{% block title %}
+    Lapor Pajak
+{% endblock %}
+
+{% block content %}
+<p>Round : {{round}}</p>
+<p>
+    Dari penghasilan yang Anda dapatkan dari game sebelumnya Anda diharapkan melaporkan pajak dengan jujur dengan form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis
+</p>
+<input id="preview" type="button" class="btn btn-danger" onclick="myFunction()" value="Preview Omset" />&emsp;&emsp;<span id="prev"></span>
+
+<table class="lap">
+    <tr><td class="lap">
+    Pelaporan SPT
+    <br>Periode : XXX
+    <br><br>
+    Masukkan omset&emsp;&emsp;&emsp;&emsp;: <input type="number" id="omset_input" name="omset_input" /> EU<br><br>
+    Jumlah pajak terutang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled /> EU
+    <br><br><br>
+    Jumlah payoff yang mungkin didapat pada periode ini : <input type="text" id="total_payoff" name="total_payoff" disabled /> EU<br>
+    </td></tr>
+</table>
+<br>
+{% next_button %}
+<script>
+    function myFunction() {
+      document.getElementById("prev").textContent = thousands_separators({{player.total_omset}}) + " EU"
+    }
+
+    function thousands_separators(num)
+    {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+    }
+
+    $("#omset_input").keyup(function(){
+        //var oms = str(document.getElementById("omset_input").value).replace(",","")
+        var omset_input = Number(document.getElementById("omset_input").value)
+        var ts = omset_input * 5 / 1000;
+        var lr = {{player.total_omset}} - {{player.total_biaya}};
+        var payoff = lr - ts;
+
+        //document.getElementById("omset_input").value = thousands_separators(omset_input)
+        document.getElementById("pph").value = thousands_separators(ts)
+        document.getElementById("total_payoff").value = thousands_separators(payoff)
+    });
+</script>
+{% endblock %}

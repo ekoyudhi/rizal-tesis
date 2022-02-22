@@ -16,7 +16,7 @@ See https://en.wikipedia.org/wiki/Guess_2/3_of_the_average
 
 class Constants(BaseConstants):
     players_per_group = None
-    num_rounds = 1
+    num_rounds = 2
     name_in_url = 'encrypt_js'
 
     letters_per_word = 1

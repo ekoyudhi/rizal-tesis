@@ -1,0 +1,59 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Pilih Waktu Uji Coba Game
+{% endblock %}
+
+{% block content %}
+
+    <p>Round : {{round}}</p>
+    <p>
+      Berikut adalah game huruf random dengan waktu permainan setiap ronde tiga pilihan mode waktu yaitu 30, 45, atau 60 detik. Masing-masing mode waktu mewakili biaya atau cost yang harus dikeluarkan, setiap jawaban benar untuk masing-masing mode waktu memiliki poin berbeda yang mewakili omset yang didapatkan yaitu:
+      <br>
+
+            <table class="pre">
+                <tr><th class="pre">Waktu (detik)</th><th class="pre">Biaya</th><th class="pre">Poin/Omset Setiap Jawaban Benar</th></tr>
+                <tr><td class="pre">30</td class="pre"><td class="pre">30% dari Omset</td><td class="pre">10,000,000 EU</td></tr>
+                <tr><td class="pre">45</td class="pre"><td class="pre">45% dari Omset</td><td class="pre">5,000,000 EU</td></tr>
+                <tr><td class="pre">60</td class="pre"><td class="pre">60% dari Omset</td><td class="pre">2,000,000 EU</td></tr>
+            </table>
+			<br>
+            <input class="form-check-input" type="radio" id="id_waktu-0" name="waktu" value="30">
+            <label for="id_waktu-0">30 Detik</label><br><br>
+			
+            <input class="form-check-input" type="radio" id="id_waktu-1" name="waktu" value="45">
+            <label for="id_waktu-1">45 Detik</label><br><br>
+			
+            <input class="form-check-input" type="radio" id="id_waktu-2" name="waktu" value="60">
+            <label for="id_waktu-2">60 Detik</label><br><br>
+    </p>
+    {% next_button %}
+
+{% endblock %}

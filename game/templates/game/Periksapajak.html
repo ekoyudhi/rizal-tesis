@@ -1,0 +1,67 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block title %}
+    Pemeriksaan Pajak
+{% endblock %}
+
+{% block content %}
+<p>Periode : {{round}}</p>
+<h4>PERHATIAN</h4>
+    <p>Pada periode ini, otoritas pajak Nusa Makmur melakukan pemeriksaan terhadap pelaporan pajak Anda dengan hasil :
+        <ul>
+            <li><span id="compliance"></span></li>
+            <!--li>Anda akan dikenakan denda (DD) sebesar <span id="denda"></span> 20.000.000 EU</li-->
+            <!--li>Anda mendapatkan pengembalian pajak sebesar <span id="restitusi"></span> 20.000.000 EU</li-->
+            <li id="keterangan"></li>
+            <input type="hidden" id="total_payoff" name="total_payoff" />
+            <li>Pay off yang dapat Anda terima untuk periode ini menjadi = <span id="sp_total_payoff"></span> EU</li>
+        </ul>
+
+    </p>
+    {% next_button %}
+<script>
+    function thousands_separators(num)
+    {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+    }
+
+    var total_omset = {{player.total_omset}}
+    var omset_input = {{player.omset_input}}
+    var total_omset_pph = 5 /1000 * total_omset
+    var omset_input_pph = 5 / 1000 * omset_input
+    var compliance = false
+    var denda = 0
+    var restitusi = 0
+    var payoff_awal = {{player.payoff_awal}}
+    var total_payoff = 0
+    if (total_omset -  omset_input > 0) {
+        compliance = false;
+        denda = 2 * (total_omset_pph - omset_input_pph)
+        restitusi = 0
+        total_payoff = payoff_awal - denda
+    } else if (total_omset - omset_input == 0) {
+        compliance = true;
+        denda = 0
+        restitusi = 0
+        total_payoff = payoff_awal
+    } else {
+        compliance = true;
+        denda = 0
+        restitusi = omset_input_pph - total_omset_pph
+        total_payoff = payoff_awal + restitusi
+    }
+
+    if (compliance) {
+        document.getElementById("compliance").textContent = "Patuh"
+        document.getElementById("keterangan").textContent = "Anda mendapatkan pengembalian pajak sebesar "+ thousands_separators(restitusi)+" EU"
+    } else {
+        document.getElementById("compliance").textContent = " Tidak Patuh"
+        document.getElementById("keterangan").textContent = "Anda akan dikenakan denda (DD) sebesar " + thousands_separators(denda) + " EU"
+    }
+    document.getElementById("sp_total_payoff").textContent = thousands_separators(total_payoff)
+    document.getElementById("total_payoff").value = total_payoff
+</script>
+{% endblock %}

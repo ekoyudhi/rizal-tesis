@@ -1,0 +1,17 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+{% endblock %}
+
+{% block title %}
+    Akhir Instruksi
+{% endblock %}
+
+{% block content %}
+    <p>
+      Anda telah menyelesaikan latihan/uji coba game sebanyak 3 kali/ronde. Setalah ini adalah game yang sebenarnya
+    </p>
+    {% next_button %}
+
+{% endblock %}

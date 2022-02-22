@@ -1,0 +1,31 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Hasil
+{% endblock %}
+
+{% block content %}
+
+<p>Periode : {{round}}</p>
+    <p>Waktu bermain {{player.waktu}} Detik dan jawaban yang benar adalah {{player.performance}}
+        <h5>Omset : <span id="omset"></span> EU</h5>
+        <h5>Biaya : <span id="biaya"></span> EU</h5>
+        <h5>Laba : <span id="laba"></span> EU</h5>
+
+    </p>
+    {% next_button %}
+
+<script>
+    function thousands_separators(num)
+    {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+    }
+    document.getElementById("omset").textContent = thousands_separators({{player.total_omset}});
+    document.getElementById("biaya").textContent = thousands_separators({{player.total_biaya}});
+    document.getElementById("laba").textContent = thousands_separators({{player.total_omset}} - {{player.total_biaya}})
+
+</script>
+{% endblock %}

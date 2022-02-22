@@ -8,16 +8,29 @@ from os import environ
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
     'participation_fee': 0.00,
+    'treatment':1,
     'doc': "",
 }
 
 SESSION_CONFIGS = [
     {
-        'name': 'encrypt_js',
-        'display_name': "Rizal Thesis Games",
+        'name': 'rizal_tesis',
+        'display_name': "Rizal Tesis Games",
         'num_demo_participants': 1,
-        'app_sequence': ['encrypt_js'],
+        'app_sequence': ['consent','instruction','game', 'after_survey'],
     },
+    {
+        'name': 'game',
+        'display_name': 'Games Dev',
+        'num_demo_participants':1,
+        'app_sequence' : ['game']
+    },
+        {
+        'name': 'after_survey',
+        'display_name': 'After Survey',
+        'num_demo_participants':1,
+        'app_sequence' : ['game','after_survey']
+    }
 ]
 
 

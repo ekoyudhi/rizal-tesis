@@ -1,0 +1,19 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+    Random
+{% endblock %}
+
+{% block content %}
+<p>Terima kasih
+</p>
+<p>Masukkan dua digit angka dari 10 s.d 99 di bawah ini
+</p>
+{{formfield 'angka_random'}}
+<p>Proses ini dilakukan secara random dengan komputerisasi.</p>
+<p>Klik Next untuk melanjutkan</p>
+
+    {% next_button %}
+
+{% endblock %}
