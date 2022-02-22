@@ -19,8 +19,8 @@ Main Game
 class Constants(BaseConstants):
     name_in_url = 'game'
     players_per_group = None
-    num_rounds = environ.get('NUM_ROUND')
-    num_audit = environ.get('NUM_AUDIT')
+    num_rounds = 10
+    num_audit = 3
 
     letters_per_word = 1
 
