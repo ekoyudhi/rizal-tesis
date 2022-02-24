@@ -38,8 +38,7 @@ table.lap, td.lap, th.lap {
 
 <table class="lap">
     <tr><td class="lap">
-    Pelaporan SPT
-    <br>Periode : XXX
+    <h5>Pelaporan SPT</h5>
     <br><br>
     <input type="hidden" id="prefill_persen" name="prefill_persen" />
     <input type="hidden" id="omset_input" name="omset_input" />
@@ -121,7 +120,7 @@ table.lap, td.lap, th.lap {
     } else if (treatment == 3) {
       prefilled_persen = getRndInteger(101,175);
     } else {
-      prefilled_persen = 100;
+      prefilled_persen = 0;
     }
 
     document.getElementById("prefill_persen").value = prefilled_persen;

@@ -50,7 +50,7 @@ class Player(BasePlayer):
     q9 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c']], label='Jika Anda menjadi petugas pemeriksa pajak, pilih hitungan denda yang tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/thYj5CN/2022-02-21-195538.png" alt="2022-02-21-195538" border="0"><br>')
     performance = models.IntegerField(initial=0, blank=False)
     mistakes = models.IntegerField(initial=0, blank=False)
-    waktu = models.IntegerField(widget=widgets.RadioSelect, label='Waktu', choices=[[30,'30 Menit'],[45,'45 Menit'],[60,'60 Menit']])
+    waktu = models.IntegerField(widget=widgets.RadioSelect, label='Waktu', choices=[[30,'30 detik'],[45,'45 detik'],[60,'60 detik']])
     total_omset = models.FloatField(initial=0, blank=False)
     total_biaya = models.FloatField(initial=0, blank=False)
     omset_input = models.FloatField(initial=0, blank=False)

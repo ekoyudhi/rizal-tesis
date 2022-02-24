@@ -6,7 +6,7 @@ import random
 class Awal(Page):
     def before_next_page(self):
         self.participant.vars['periode'] = Constants.num_rounds
-        r_list = random.sample(range(1,Constants.num_rounds),Constants.num_audit)
+        r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
         r_list.sort()
         idx = 1
         for r in r_list:
@@ -35,14 +35,14 @@ class Ambilwaktu(Page):
         waktu = self.player.waktu
         self.participant.vars['waktu'] = waktu
         if waktu == 30:
-            self.participant.vars['base_omset'] = 10000000
+            self.participant.vars['base_omset'] = 8000000
             self.participant.vars['base_biaya'] = 30
         elif waktu == 45:
-            self.participant.vars['base_omset'] = 5000000
+            self.participant.vars['base_omset'] = 6500000
             self.participant.vars['base_biaya'] = 45
         elif waktu == 60:
-            self.participant.vars['base_omset'] = 2000000
-            self.participant.vars['base_biaya'] = 60
+            self.participant.vars['base_omset'] = 5500000
+            self.participant.vars['base_biaya'] = 50
         else:
             self.participant.vars['base_omset'] = 0
             self.participant.vars['base_biaya'] = 0
@@ -80,6 +80,10 @@ class Laporpajak(Page):
     form_model = 'player'
     form_fields = ['omset_input','prefill_persen','payoff_awal']
 
+    def get_timeout_seconds(player):
+        waktu = 60
+        return waktu
+
     def vars_for_template(self):
         r = self.round_number
         treatment = self.session.config['treatment']
@@ -88,6 +92,7 @@ class Laporpajak(Page):
 
     def before_next_page(self):
         self.participant.vars['payoff_awal_'+ str(self.round_number)] = self.player.payoff_awal
+        self.participant.vars['total_payoff_'+ str(self.round_number)] = self.player.payoff_awal
 
 #randomlist 3 dari 0 s.d. 10
 class Periksapajak(Page):

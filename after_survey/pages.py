@@ -29,7 +29,12 @@ class Prosespay(Page):
         #player = self.player.participant.vars
         periode_terpilih = self.participant.vars['periode_terpilih']
         payoff_awal = self.participant.vars['payoff_awal_'+str(periode_terpilih)]
-        return{'periode_terpilih':periode_terpilih,'payoff_real':payoff_awal}
+        payoff_total = self.participant.vars['total_payoff_'+str(periode_terpilih)]
+        payoff_real = round(15000 + (payoff_total/1000), -3)
+        return{'periode_terpilih':periode_terpilih,
+                'payoff_awal':payoff_awal,
+                'payoff_total':payoff_total,
+               'payoff_real':payoff_real}
     
 class Hasilpay(Page):
     pass

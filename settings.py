@@ -8,8 +8,8 @@ from os import environ
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
     'participation_fee': 0.00,
-    'treatment':1,
-    'doc': "",
+    'treatment': 0,
+    'doc': "Game untuk Tesis Rizal AS",
 }
 
 SESSION_CONFIGS = [
@@ -26,8 +26,8 @@ SESSION_CONFIGS = [
         'app_sequence' : ['game']
     },
         {
-        'name': 'after_survey',
-        'display_name': 'After Survey',
+        'name': 'game_after_survey',
+        'display_name': 'Game plus After Survey',
         'num_demo_participants':1,
         'app_sequence' : ['game','after_survey']
     }

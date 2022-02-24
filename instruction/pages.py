@@ -11,7 +11,7 @@ class Pengantar(Page):
     form_fields = ['q1','q2','q3','q4','q5','q6','q7','q8','q9']
 
     def error_message(player, values):
-        solutions = dict(q1=2,q2=2,q3=1,q4=1,q5=4,q6=2,q7=1,q8=2,q9=3)
+        solutions = dict(q1=2,q2=2,q3=1,q4=2,q5=4,q6=2,q7=1,q8=2,q9=3)
         error_messages= dict()
         for field_name in solutions:
             if values[field_name] != solutions[field_name]:
@@ -31,14 +31,14 @@ class Pilihwaktu(Page):
         waktu = self.player.waktu
         self.participant.vars['waktu'] = waktu
         if waktu == 30:
-            self.participant.vars['base_omset'] = 10000000
+            self.participant.vars['base_omset'] = 8000000
             self.participant.vars['base_biaya'] = 30
         elif waktu == 45:
-            self.participant.vars['base_omset'] = 5000000
+            self.participant.vars['base_omset'] = 6500000
             self.participant.vars['base_biaya'] = 45
         elif waktu == 60:
-            self.participant.vars['base_omset'] = 2000000
-            self.participant.vars['base_biaya'] = 60
+            self.participant.vars['base_omset'] = 5500000
+            self.participant.vars['base_biaya'] = 50
         else:
             self.participant.vars['base_omset'] = 0
             self.participant.vars['base_biaya'] = 0
