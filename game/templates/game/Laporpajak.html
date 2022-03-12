@@ -28,38 +28,43 @@ table.lap, td.lap, th.lap {
 </style>
 {% endblock %}
 {% block title %}
-    Lapor Pajak
+Pelaporan Pajak Penghasilan
 {% endblock %}
 
 {% block content %}
-<p>Periode : {{round}}</p>
-
+<h5>Periode Inti ke-{{round}}</h5>
+<br>
+<p>
+  Dari penghasilan yang Anda dapatkan dari game sebelumnya Anda diharapkan melaporkan pajak dengan jujur dengan form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis
+</p>
 <input id="preview" type="button" class="btn btn-danger" onclick="prevFunction()" value="Preview Omset" />&emsp;&emsp;<span id="prev"></span>
 
 <table class="lap">
     <tr><td class="lap">
     <h5>Pelaporan SPT</h5>
-    <br><br>
+    <br>
     <input type="hidden" id="prefill_persen" name="prefill_persen" />
     <input type="hidden" id="omset_input" name="omset_input" />
     Masukkan omset&emsp;&emsp;&emsp;&emsp;: <input type="text" id="txt_omset_input" name="txt_omset_input" /> EU<br><br>
     Jumlah pajak terutang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled /> EU
-    <br><br>
-    <input id="btnHitung" type="button" class="btn btn-success" onclick="hitungFunction()" value="Hitung" />
+    <br>
     <br>
     <input type="hidden" id="payoff_awal" name="payoff_awal" />
     Jumlah payoff yang mungkin didapat pada periode ini : <input type="text" id="txt_payoff_awal" name="txt_payoff_awal" disabled /> EU<br>
     </td></tr>
 </table>
 <br>
-{% next_button %}
+<p>Pastikan kembali bahwa pengisian pelaporan pajak benar-benar sesuai dengan keputusan Anda. </p>
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah yakin dengan isian pelaporan Anda</p>
+<button id="btn_lanjut" disabled="disabled" class="otree-btn-next btn btn-primary">Lanjut</button>
 <script>
 
     function hitungFunction() {
       var txt_omset = document.getElementById("txt_omset_input").value;
       var omset_input = parseFloat(txt_omset.replace(/,/g, ''));
         // var omset_input = Number(document.getElementById("omset_input").value)
-        var ts = omset_input * 5 / 1000;
+        var ts = omset_input * {{tarif_pajak}};
         var lr = {{player.total_omset}} - {{player.total_biaya}};
         var payoff = lr - ts;
 
@@ -104,7 +109,7 @@ table.lap, td.lap, th.lap {
         $this.val(function () {
             return (input === 0)?"0":input.toLocaleString("en-US"); 
         });
-        $("#btnHitung").click();
+        hitungFunction();
     });
 
     //prefilled
@@ -112,13 +117,30 @@ table.lap, td.lap, th.lap {
       return Math.floor(Math.random() * (max - min)) + min;
     }
     var treatment = Number({{treatment}});
-    var prefilled_persen = 0;
+
+    function getTreat(treatment) {
+      var prefilled_persen = 0;
+      if (treatment == 1) {
+        prefilled_persen = getRndInteger(25,99);
+      } else if (treatment == 2) {
+        prefilled_persen = 100;
+      } else if (treatment == 3) {
+        prefilled_persen = getRndInteger(101,175);
+      } else {
+        prefilled_persen = 0;
+      }
+      return prefilled_persen;
+    }
+
     if (treatment == 1) {
       prefilled_persen = getRndInteger(25,99);
     } else if (treatment == 2) {
       prefilled_persen = 100;
     } else if (treatment == 3) {
       prefilled_persen = getRndInteger(101,175);
+    } else if (treatment == 4) {
+      var t = getRndInteger(1,3)
+      prefilled_persen = getTreat(t)
     } else {
       prefilled_persen = 0;
     }
@@ -126,6 +148,22 @@ table.lap, td.lap, th.lap {
     document.getElementById("prefill_persen").value = prefilled_persen;
     document.getElementById("txt_omset_input").value = prefilled_persen / 100 * {{player.total_omset}};
     $("#txt_omset_input").keyup();
+
+    var s = 10;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+      
+      // If the count down is over, write some text 
+      if (s <= 0) {
+        clearInterval(x);
+        document.getElementById('btn_lanjut').disabled = false;
+        document.getElementById("btn_lanjut").textContent = "Lanjut"
+      } else {
+        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
+      }
+      s--;
+    }, 1000);
 
 </script>
 {% endblock %}

@@ -28,11 +28,11 @@ table.lap, td.lap, th.lap {
 </style>
 {% endblock %}
 {% block title %}
-    Lapor Pajak
+    Pelaporan Pajak Penghasilan
 {% endblock %}
 
 {% block content %}
-<p>Round : {{round}}</p>
+<h5>Periode latihan ke-{{round}}</h5>
 <p>
     Dari penghasilan yang Anda dapatkan dari game sebelumnya Anda diharapkan melaporkan pajak dengan jujur dengan form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis
 </p>
@@ -41,16 +41,39 @@ table.lap, td.lap, th.lap {
 <table class="lap">
     <tr><td class="lap">
     <h5>Pelaporan SPT</h5>
-    <br><br>
-    Masukkan omset&emsp;&emsp;&emsp;&emsp;: <input type="number" id="omset_input" name="omset_input" /> EU<br><br>
+    <br>
+    <input type="hidden" id="omset_input" name="omset_input" />
+    Masukkan omset&emsp;&emsp;&emsp;&emsp;: <input type="text" id="txt_omset_input" name="txt_omset_input" /> EU<br><br>
     Jumlah pajak terutang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled /> EU
-    <br><br><br>
+    <br><br>
     Jumlah payoff yang mungkin didapat pada periode ini : <input type="text" id="total_payoff" name="total_payoff" disabled /> EU<br>
     </td></tr>
 </table>
 <br>
-{% next_button %}
+<p>Pastikan kembali bahwa pengisian pelaporan pajak benar-benar sesuai dengan keputusan Anda. </p>
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah yakin dengan isian pelaporan Anda</p>
+<button id="btn_lanjut" disabled="disabled" class="otree-btn-next btn btn-primary">Lanjut</button>
+
 <script>
+    function hitungFunction() {
+      var txt_omset = document.getElementById("txt_omset_input").value;
+      var omset_input = parseFloat(txt_omset.replace(/,/g, ''));
+        // var omset_input = Number(document.getElementById("omset_input").value)
+        var ts = omset_input * {{tarif_pajak}};
+        var lr = {{player.total_omset}} - {{player.total_biaya}};
+        var payoff = lr - ts;
+
+        document.getElementById("pph").value = thousands_separators(ts)
+        document.getElementById("total_payoff").value = thousands_separators(payoff)
+
+        if (document.getElementById("txt_omset_input").value == "") {
+          document.getElementById("omset_input").value = 0
+        } else {
+          document.getElementById("omset_input").value = omset_input
+        }
+    }
+
     function myFunction() {
       document.getElementById("prev").textContent = thousands_separators({{player.total_omset}}) + " EU"
     }
@@ -62,16 +85,46 @@ table.lap, td.lap, th.lap {
         return num_parts.join(".");
     }
 
-    $("#omset_input").keyup(function(){
+    $("#txt_omset_input").keyup(function(event){
         //var oms = str(document.getElementById("omset_input").value).replace(",","")
-        var omset_input = Number(document.getElementById("omset_input").value)
-        var ts = omset_input * 5 / 1000;
-        var lr = {{player.total_omset}} - {{player.total_biaya}};
-        var payoff = lr - ts;
-
-        //document.getElementById("omset_input").value = thousands_separators(omset_input)
-        document.getElementById("pph").value = thousands_separators(ts)
-        document.getElementById("total_payoff").value = thousands_separators(payoff)
+        // When user select text in the document, also abort.
+        var selection = window.getSelection().toString(); 
+        if (selection !== '') {
+            return; 
+        }       
+        // When the arrow keys are pressed, abort.
+        if ($.inArray(event.keyCode, [38, 40, 37, 39]) !== -1) {
+            return; 
+        }       
+        var $this = $(this);            
+        // Get the value.
+        var input = $this.val();            
+        input = input.replace(/[\D\s\._\-]+/g, ""); 
+        input = input?parseInt(input, 10):0; 
+        $this.val(function () {
+            return (input === 0)?"0":input.toLocaleString("en-US"); 
+        });
+        hitungFunction();
     });
+
+    var s = 10;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+      
+      // If the count down is over, write some text 
+      if (s <= 0) {
+        clearInterval(x);
+        document.getElementById('btn_lanjut').disabled = false;
+        document.getElementById("btn_lanjut").textContent = "Lanjut"
+      } else {
+        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
+      }
+      s--;
+    }, 1000);
+
+    document.getElementById("txt_omset_input").value = 0;
+    $("#txt_omset_input").keyup();
+    $("#txt_omset_input").focus();
 </script>
 {% endblock %}

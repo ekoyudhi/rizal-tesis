@@ -30,4 +30,5 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
+    email = models.StringField(blank=False)
     consent = models.BooleanField(choices=[[True, 'Ya'], [False, 'Tidak']])

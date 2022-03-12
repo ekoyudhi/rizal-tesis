@@ -7,14 +7,18 @@
 
 {% block content %}
 
-<p>Periode : {{round}}</p>
+<h5>Periode Inti ke-{{round}}</h5>
+<br>
+<p>Anda mendapatkan laba sebesar = <b><span id="laba"></span> EU</b>, dengan rincian</p>
     <p>Waktu bermain {{player.waktu}} Detik dan jawaban yang benar adalah {{player.performance}}
-        <h5>Omset : <span id="omset"></span> EU</h5>
-        <h5>Biaya : <span id="biaya"></span> EU</h5>
-        <h5>Laba : <span id="laba"></span> EU</h5>
+        <h5>Omset&#9;:&#9;{{player.performance}} x <span id="base_omset"></span> EU = <span id="omset"></span> EU</h5>
+        <h5>Biaya&#9;:&#9;{{base_biaya}}% x <span id="omset2"></span> EU = <span id="biaya"></span> EU</h5>
+        <h5>Laba&#9;:&#9;<span id="omset3"></span> EU - <span id="biaya2"></span> EU = <span id="laba2"></span> EU</h5>
 
     </p>
-    {% next_button %}
+    <br>
+    <p>Tekan tombol 'Lanjut' untuk melanjutkan ke tahap berikutnya.</p>
+    <button class="otree-btn-next btn btn-primary">Lanjut</button>
 
 <script>
     function thousands_separators(num)
@@ -23,9 +27,14 @@
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return num_parts.join(".");
     }
+    document.getElementById("base_omset").textContent = thousands_separators({{base_omset}});
     document.getElementById("omset").textContent = thousands_separators({{player.total_omset}});
+    document.getElementById("omset2").textContent = thousands_separators({{player.total_omset}});
+    document.getElementById("omset3").textContent = thousands_separators({{player.total_omset}});
     document.getElementById("biaya").textContent = thousands_separators({{player.total_biaya}});
+    document.getElementById("biaya2").textContent = thousands_separators({{player.total_biaya}});
     document.getElementById("laba").textContent = thousands_separators({{player.total_omset}} - {{player.total_biaya}})
+    document.getElementById("laba2").textContent = thousands_separators({{player.total_omset}} - {{player.total_biaya}})
 
 </script>
 {% endblock %}

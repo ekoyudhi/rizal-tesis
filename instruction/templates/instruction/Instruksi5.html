@@ -1,0 +1,49 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Instruksi Eksperimen (lanjutan)
+{% endblock %}
+
+{% block content %}
+<p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu (lanjutan):</p>
+<p><h5><b>i. Kuesioner Singkat</b></h5></p>
+<p>Merupakan kuesioner yang berisi kurang-lebih 10 pertanyaan singkat setelah Anda menyelesaikan 10 periode game. Seluruh pertanyaan harus diisi sehingga Anda dapat melanjutkan ke tahap pencairan pembayaran</p>
+
+<p><h5><b>j. Pencairan Pembayaran</b></h5></p>
+<p>Metode pencairan pembayaran dalam penelitian ini adalah hanya satu periode dari 10 periode game. Pencairan pembayaran Anda bisa jadi berasal dari periode manapun antara periode 1 sampai 10 yang dipilih secara acak dengan komputer.</p>
+<p>Pemilihan acak dilakukan dengan Anda memasukkan dua digit angka random antara 10 s.d 99 yang kemudian dienkripsi ke angka random antara 1 s.d 10 dengan distribusi uniform untuk menentukan periode game mana yang menjadi basis pembayaran Anda. Nilai pembayaran EU akan dikonversi ke rupiah dengan dibagi 1.000 dan dibulatkan dalam ribuan penuh. Pembayaran ini akan ditambah uang partisipasi sebesar 15.000. Anda dapat memilih salah satu dari opsi transfer uang untuk pembayaran Anda ke OVO atau GOPAY. Anda akan mendapatkan pembayaran segera setelah Anda menyelesaikan eksperimen.</p>
+<p>Berikut adalah tangkapan layar dari penelitian agar Anda dapat lebih mudah memahami.</p>
+<img src="https://i.ibb.co/yftktQQ/2022-03-12-130743.jpg" width="600" height="400">
+
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+
+{% endblock %}

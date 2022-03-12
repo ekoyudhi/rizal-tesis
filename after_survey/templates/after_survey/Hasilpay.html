@@ -12,9 +12,9 @@
 {% endblock %}
 
 {% block content %}
-<p>Random payment Anda adalah periode {{player.periode_terpilih}}, dengan total payoff sebesar <b>Rp <span class="payoff" id="payoff_real"></span></b></p>
+<p>Random payment Anda adalah periode {{player.periode_terpilih}}, dengan total payoff sebesar <b>Rp <span class="payoff" id="payoff_real1"></span> + Rp <span class="payoff">15,000</span> = Rp <span class="payoff" id="payoff_real"></span></b></p>
 
-<p>Yang selanjutnya akan ditransfer ke nomor HP: <span class="payoff" id="no_hp">{{player.s1}}</span></p>
+<p>Yang selanjutnya akan ditransfer ke nomor <span class="payoff" id="metode"></span> : <span class="payoff" id="no_hp">{{player.s17}}</span></p>
 <p>Dana akan ditransfer maksimal 3x24 jam</p>
 
 <p>Terima kasih atas partisipasi Anda</p>
@@ -31,7 +31,18 @@
         return num_parts.join(".");
     }
 
+    document.getElementById("payoff_real1").textContent = thousands_separators({{player.payoff_real}}-15000)
     document.getElementById("payoff_real").textContent = thousands_separators({{player.payoff_real}})
+    var mtd = {{player.s18}}
+    var metode = ""
+    if (mtd == 1) {
+        metode = "OVO";
+    } else if (mtd == 2) {
+        metode = "GOPAY"
+    } else {
+        metode = "ERROR"
+    }
+    document.getElementById("metode").textContent = metode
 
 </script>
 

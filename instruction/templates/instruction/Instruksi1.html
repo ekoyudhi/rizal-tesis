@@ -1,0 +1,75 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Instruksi Eksperimen
+{% endblock %}
+
+{% block content %}
+<p>Selamat datang dan terima kasih telah bersedia untuk mengikuti eksperimen ini. Mohon dibaca dengan seksama seluruh instruksi agar Anda dapat memahami apa yang harus Anda lakukan di dalam eksperimen ini.</p>
+
+<p>Eksperimen ini memberikan Anda kesempatan untuk memperoleh uang tunai yang akan dibayarkan setelah Anda menyelesaikan rangkaian eksperimen ini. Besaran uang yang akan Anda peroleh bergantung pada apa yang Anda lakukan di dalam eksperimen ini. Oleh karenanya, mohon untuk serius dalam menyelesaikannya sesuai dengan keputusan Anda.</p>
+
+<p>Untuk peserta yang menyelesesaikan semua bagian penelitian ini akan minimal mendapatkan pembayaran berupa participant fee sebesar Rp15.000 serta tambahan kurang lebih Rp20.000 s.d Rp100.000 tergantung dari kesempatan yang ada dan keputusan yang Anda lakukan.</p>
+<p><h5><b>1. Eksperimen</b></h5></p>
+<p>Eksperimen ini meminta Anda untuk melakukan pengambilan keputusan dalam melaporkan pajak penghasilan Anda. Penelitian ini terdiri dari tiga bagian yaitu pengantar, game, dan kuesioner singkat.</p>
+<p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu:</p>
+<p><h5><b>a. Pengantar</b></h5></p>
+<p>Pada bagian ini Anda akan mendapat cerita yang memberikan gambaran umum dan kondisi yang digunakan dalam penelitian. Bagian ini bercerita tentang bagaimana negara tempat Anda tinggal, kewajiban yang harus Anda lakukan, tarif pajak yang diterapkan serta beberapa informasi lain yang harus Anda pahami yang direfleksikan dengan jawaban yang benar atas beberapa pertanyaan untuk dapat melanjutkan ke tahap berikutnya.</p>
+<p>Informasi/pertanyaan dalam pengantar terdiri dari:</p>
+<ol>
+    <li>Nama Negara</li>
+    <li>Kewajiban membayar pajak</li>
+    <li>Jumlah periode pelaporan</li>
+    <li>Dasar pengenaan pajak</li>
+    <li>Penurunan tarif</li>
+    <li>Penghitungan pajak dan pembayaran</li>
+    <li>Probabilitas pemeriksaan</li>
+    <li>Besar denda jika tidak patuh</li>
+    <li>Penghitungan denda yang benar</li>
+</ol>
+<p><h5><b>b. Periode</b></h5></p>
+<p>Periode adalah rangkaian dalam satu game yaitu:</p>
+<ol>
+    <li>Anda melakukan real effort game yaitu game huruf random yang digunakan untuk mendapatkan omset/pendapatan yang akan digunakan untuk pelaporan </li>
+    <li>Melaporkan pajak dalam form yang tersedia</li>
+</ol>
+<p>Anda akan bermain dalam 3 periode latihan dan ditambah 10 periode game inti.</p>
+<p><h5><b>c. Latihan</b></h5></p>
+<p>Untuk lebih memahami penelitian ini maka Anda akan melakukan 3 periode game sebelum masuk ke game inti sebanyak 10 periode</p>
+<p><h5><b>d. Durasi Eksperimen</b></h5></p>
+<p>Estimasi untuk menyelesaikan rangkaian eksperimen ini adalah selama kurang lebih 60 menit. Namun hal ini tergantung dari bagaimana Anda memahami instruksi dan waktu yang Anda butuhkan untuk memutuskan alokasi Anda. Kami harap Anda menyelesaikan eksperimen ini secara mandiri karena akan menentukan pembayaran yang Anda peroleh! Anda dapat menghubungi kami melalui WhatsApp di wa.me/628569041762 jika ada hal-hal yang perlu Anda tanyakan.</p>
+<p><h5><b>e. Penghitungan Pembayaran</b></h5></p>
+<p>Dalam game ini Anda akan mendapat penghasilan atau pendapatan yang diukur dalam satuan EU (Eksperimen Unit) dimana 1.000 EU dapat dikonversikan menjadi 1 (satu) rupiah. Misal Anda mendapatkan 50.000.000 EU maka dapat dikonversikan menjadi Rp50.000,-</p>
+
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+
+{% endblock %}

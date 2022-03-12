@@ -1,3 +1,4 @@
+from tokenize import blank_re
 from otree.api import (
     models, widgets, BaseConstants, BaseSubsession, BaseGroup, BasePlayer
 )
@@ -16,6 +17,7 @@ class Constants(BaseConstants):
 
     use_timeout = True
     seconds_per_period = 60
+    tarif_pajak = 0.1
 
 class Subsession(BaseSubsession):
     pass
@@ -39,15 +41,15 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    q1 = models.IntegerField(choices=[[1,'Indonesia'],[2,'Nusa Makmur']], label='Nama negara')
-    q2 = models.IntegerField(choices=[[1,'Tidak Wajib'],[2,'Wajib']], label='Apakah wajib membayar pajak')
-    q3 = models.IntegerField(choices=[[1,'10 Periode'],[2,'12 Periode']], label='Anda harus melaporkan pajak dalam berapa periode?')
-    q4 = models.IntegerField(choices=[[1,'Laba (Rugi)'],[2,'Omset']], label='Dasar pengenaan pajak')
-    q5 = models.IntegerField(choices=[[1,'Tidak ada'],[2,'Ada, dari 2% ke 1% dari Laba'],[3,'Ada, dari 1%; ke 0,5% dari Laba'],[4,'Ada, dari 1% ke 0,5% dari Omset']], label='Apakah ada penurunan tarif, berapa nilainya?')
-    q6 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c'],[4,'d']], label='Pilih penghitungan pajak yang tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/BPmT7cp/2022-02-21-195502.png" alt="2022-02-21-195502" border="0"><br>')
-    q7 = models.IntegerField(choices=[[1,'30% dari total pelaporan, yaitu 3 dari 10 periode pelaporan pajak'],[2,'probabilitias 10% s.d 50% pada akhir setiap periode pelaporan pajak']], label='Berapa probabilitas pemeriksaan yang dilakukan oleh Nusa Makmur?')
-    q8 = models.IntegerField(choices=[[1,'sebesar 100% dari selisih pajak yang kurang dibayar'],[2,'sebesar 200% dari selisih pajak yang kurang dibayar'],[3,'sebesar 300% dari selisih pajak yang kurang dibayar']], label='Besar total denda jika terdapat pajak yang masing kurang dibayar?')
-    q9 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c']], label='Jika Anda menjadi petugas pemeriksa pajak, pilih hitungan denda yang tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/thYj5CN/2022-02-21-195538.png" alt="2022-02-21-195538" border="0"><br>')
+    q1 = models.IntegerField(choices=[[1,'Indonesia'],[2,'Nusa Makmur']], label='1) Anda adalah warga negara?')
+    q2 = models.IntegerField(choices=[[1,'Tidak Wajib'],[2,'Wajib']], label='2) Sebagai warga negara, Apakah Anda wajib membayar pajak?')
+    q3 = models.IntegerField(choices=[[1,'10 Periode'],[2,'12 Periode']], label='3) Anda harus melaporkan pajak dalam berapa periode?')
+    q4 = models.IntegerField(choices=[[1,'Laba (Rugi)'],[2,'Omset']], label='4) Dasar pengenaan Pajak')
+    q5 = models.IntegerField(choices=[[1,'Tidak ada'],[2,'Ada, dari 20% ke 10% dari Laba'],[3,'Ada, dari 10% ke 5% dari Laba'],[4,'Ada, dari 20% ke 10% dari Omset']], label='5) Apakah ada penurunan tarif, berapa nilainya?')
+    q6 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c'],[4,'d']], label='6) Pilih penghitungan pajak dan pendapatan bersih yang paling tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/Kh4QQq1/tb1.jpg" alt="2022-02-21-195502" border="0" width="600" height="200"><br>Pilih jawaban di bawah')
+    q7 = models.IntegerField(choices=[[1,'30% dari total pelaporan, yaitu 3 dari 10 periode pelaporan pajak'],[2,'Tidak diketahui']], label='7) Berapa probabilitas pemeriksaan yang dilakukan oleh Nusa Makmur?')
+    q8 = models.IntegerField(choices=[[1,'sebesar 100% dari selisih pajak yang kurang dibayar'],[2,'sebesar 200% dari selisih pajak yang kurang dibayar'],[3,'sebesar 300% dari selisih pajak yang kurang dibayar']], label='8) Besar total denda jika terdapat pajak yang masing kurang dibayar?')
+    q9 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c']], label='9)	Jika Anda menjadi petugas pemeriksa pajak, pilih hitungan denda yang tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/Sm21jsh/tb2.jpg" alt="2022-02-21-195538" border="0" width="600" height="400"><br>Pilih jawaban di bawah')
     performance = models.IntegerField(initial=0, blank=False)
     mistakes = models.IntegerField(initial=0, blank=False)
     waktu = models.IntegerField(widget=widgets.RadioSelect, label='Waktu', choices=[[30,'30 detik'],[45,'45 detik'],[60,'60 detik']])

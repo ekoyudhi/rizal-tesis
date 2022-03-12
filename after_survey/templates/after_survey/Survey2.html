@@ -1,0 +1,20 @@
+{% extends "global/Page.html" %}
+{% load otree static %}
+
+{% block title %}
+Data untuk Pencairan Pembayaran
+{% endblock %}
+
+{% block content %}
+{{ formfield 's11' }}
+{{ formfield 's12' }}
+{{ formfield 's13' }}
+{{ formfield 's14' }}
+{{ formfield 's15' }}
+{{ formfield 's16' }}
+{{ formfield 's17' }}
+{{ formfield 's18' }}
+<br>
+<p>Tekan tombol 'Lanjut' untuk masuk ke halaman berikutnya.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+{% endblock %}

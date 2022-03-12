@@ -5,20 +5,23 @@
 {% endblock %}
 
 {% block title %}
-    Welcome
+    Lembar Persetujuan
 {% endblock %}
 
 {% block content %}
     <p>
-        Selamat datang para peserta penelitian yang saya hormati. Terima kasih atas partisipasi dalam penelitian ini. Data Anda dijamin keamanannya, analisis data akan dilakukan secara anonim. Meskipun penelitian ini bersifat online, diharapkan masing-masing peserta tidak berkomunikasi satu sama lain, jika ada pertanyaan dapat disampaikan ke peneliti melalui whatsapp di wa.me/628569041762.
+        Partisipasi Anda bersifat sukarela. Jika Anda:
     </p>
+    <ol>
+        <li>telah membaca lembar persetujuan ini</li>
+        <li>setuju untuk berpartisipasi dalam penelitian ini</li>
+        <li>berusia minimal 18 tahun, dan</li>
+        <li>merupakan mahasiswa aktif Universitas Gadjah Mada</li>
+    </ol>
     <p>
-        Penelitian ini terdiri dari tiga bagian yaitu pengantar, game, dan survey singkat. Untuk peserta yang menyelesesaikan semua bagian akan minimal mendapatkan participant fee sebesar Rp25.000 serta tambahan kurang lebih Rp25.000 s.d Rp150.000 tergantung dari kesempatan yang ada dan keputusan yang Anda lakukan. Pastikan Anda memahami petunjuk karena fee tambahan bergantung dari instruksi yang ada.
+        maka Anda bisa memilih (mencentang) “Ya” untuk setuju mengikuti penelitian ini dan sebaliknya Anda bisa memilih (mencentang) “Tidak” untuk meninggalkan penelitian.
     </p>
-    <p>
-        Partisipasi Anda bersifat sukarela. Jika Anda telah membaca lembar persetujuan ini, setuju berpartisipasi, berusia minimal 18 tahun, dan merupakan mahasiswa aktif Universitas Gadjah Mada, maka Anda bisa memilih (mencentang) “Ya”; sebaliknya Anda bisa memilih (mencentang) “Tidak”.
-    </p>
-    {{formfield 'consent'}}
-    {% next_button %}
+    {{formfield 'consent' label=''}}
+    <button class="otree-btn-next btn btn-primary">Simpan</button>
 
 {% endblock %}

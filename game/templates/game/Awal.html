@@ -2,21 +2,12 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Pendahuluan
+    Periode Inti ke-{{round}}
 {% endblock %}
 
 {% block content %}
 
-<p>
-   Dalam game ini Anda akan melakukan 10 periode, tugas Anda adalah:
-    <ol>
-    <li>melakukan game huruf random dengan ketentuan sebagaimana sebelumnya</li>
-    <li>pajak dalam form yang tersedia dengan waktu maksimal 1 menit.</li> 
-    </ol>
-    </p>
-    <p>
-        Anda dapat selalu mengecek pendapatan yang Anda dapatkan dalam game huruf random hanya untuk satu periode sebelumnya menggunakan tombol preview. Klik tombol submit jika Anda sudah yakin dengan pengisian laporan Anda.
-    </p>
-    {% next_button %}
+<p>Tekan tombol 'Mulai' untuk memulai eksperimen.</p> 
+<button class="otree-btn-next btn btn-primary">Mulai</button>
 
 {% endblock %}

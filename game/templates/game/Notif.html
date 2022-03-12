@@ -2,16 +2,37 @@
 {% load staticfiles otree %}
 
 {% block title %}
-    Notifikasi
+    PERHATIAN!!!
 {% endblock %}
 
 {% block content %}
+<div class="alert alert-warning" role="alert">
+<p>Saat ini otoritas pajak Nusa Makmur meningkatkan kapasitas <b>analisis data dengan pihak ketiga</b> sehingga mampu <b>mengestimasi omset yang diperoleh oleh Anda dalam suatu periode</b>.</p> 
+<p>Estimasi <b>omset langsung diisikan (prefilled) dalam kolom omset</b> yang akan dilaporkan WP.</p>
+<p>Pastikan Anda <b>memeriksa</b> isian omset prefilled tersebut, Anda dapat melakukan <b>enyesuaian jika isian omset prefilled tersebut tidak tepat menurut Anda</b>p.</p>
+<p><b>Submit laporan jika Anda sudah yakin</b> dengan isian Anda.</p>
+<p>Segala konsekuensi dari pengisian laporan pajak <b>merupakan tanggung jawab Anda sepenuhnya</b>.</p>
+</div>
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button id="btn_lanjut" disabled="disabled" class="otree-btn-next btn btn-primary">Lanjut</button>
+<script lang="text/javascript">
+    var s = 10;
 
-<p>
-    Saat ini otoritas pajak Nusa Makmur meningkatkan kapasitas analisis data dengan pihak ketiga sehingga mampu mengestimasi omset yang diperoleh oleh wajib pajak dalam satu periode. Estimasi omset langsung diisikan (prefilled) dalam kolom omset yang akan dilaporkan WP. Pastikan Anda memeriksa isian omset prefilled tersebut, Anda dapat melakukan penyesuaian jika isian omset prefilled tersebut tidak tepat menurut Anda. Submit laporan jika Anda sudah yakin dengan isian tersebut telah Anda periksa. Kesalahan pengisian SPT bukan merupakan tanggung jawab otoritas pajak Nusa Makmur.
-</p>
-    {% next_button %}
-
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+    // If the count down is over, write some text 
+    if (s <= 0) {
+        clearInterval(x);
+        document.getElementById('btn_lanjut').disabled = false;
+        document.getElementById("btn_lanjut").textContent = "Lanjut"
+    } else {
+        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
+    }
+    s--;
+    }, 1000);
+</script>
 {% endblock %}
 
 

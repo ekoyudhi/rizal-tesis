@@ -1,0 +1,58 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Instruksi Eksperimen (lanjutan)
+{% endblock %}
+
+{% block content %}
+<p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu (lanjutan):</p>
+<p><h5><b>f. Game Huruf Random</b></h5></p>
+<p>Game ini digunakan sebagai proxy untuk penghasilan Anda dalam suatu periode. Game ini terdiri dari encoding satu huruf dari 26 huruf abjad dan angka yang diacak secara random uniform. Anda harus mengalokasikan angka untuk setiap huruf abjad. Kode enkripsi dapat ditemukan dalam tabel di bawah isian angka untuk huruf yang muncul. Game ini dibagi menjadi tiga mode waktu yaitu 30, 45, atau 60 detik. Masing-masing mode waktu mewakili biaya atau cost yang harus dikeluarkan, setiap jawaban benar untuk masing-masing mode waktu memiliki poin berbeda yang mewakili omset yang didapatkan. Anda bebas memilih mode waktu sesuai dengan preferensi Anda.</p>
+<p>Berikut adalah tangkapan layar dari game agar Anda dapat lebih mudah memahami:</p>
+<p>Pilih Waktu Game</p>
+<img src="https://i.ibb.co/v1Q2tQC/2022-03-12-125406.jpg" width="600" height="400">
+<p>Misalnya Anda memilih waktu 30 detik, maka akan muncul sebagai berikut:</p>
+<img src="https://i.ibb.co/hFdTF59/2022-03-12-131323.jpg" width="600" height="400">
+<p>Pada contoh ini Anda sudah menjawab satu jawaban benar (lihat hasil omset dan biaya di kiri atas tangkapan layar). Satu jawaban benar pada mode 30 detik yaitu 8.000.000 EU dengan biaya sebesar 30% x 8.000.000 = 2.400.000 EU.</p>
+<p>Jawaban benar untuk code yang harus dimasukkan untuk huruf A adalah 64. Caranya dengan melihat tabel enkripsi di bawahnya dimana huruf A berada di atas angka 64.</p>
+<p>Kursor akan otomatis aktif di kotak code sehingga Anda dapat langsung menulis angka dan menekan tombol enter pada keyboard atau meng-klik tombol submit pada layar.</p>
+<p>Jika jawaban benar maka akan lanjut ke huruf random berikutnya misalnya</p>
+<img src="https://i.ibb.co/vkHD26S/2022-03-12-131338.jpg" width="600" height="400">
+<p>Jawaban benar untuk code yang harus dimasukkan untuk huruf X adalah 28. Caranya dengan melihat tabel enkripsi di bawahnya dimana huruf X berada di atas angka 28.</p>
+<p>Huruf yang muncul dalam pertanyaan serta urutan huruf dan angka dalam tabel enkripsi dirandom dengan distribusi uniform.</p>
+<p>Setelah waktu berakhir (sesuai mode yang dipilih) maka hasil game huruf random akan muncul. Misal Anda mendapat 1 jawaban benar maka pendapatan yang saya dapatkan adalah:</p>
+<img src="https://i.ibb.co/bmgV81r/2022-03-12-125508.jpg" width="600" height="400">
+<p>Secara rata-rata, semakin banyak jawaban benar maka semakin banyak pembayaran yang mungkin Anda dapatkan.</p>
+<p>Hasil dari game ini yang selanjutnya akan digunakan untuk keperluan pelaporan pajak pada tahap berikutnya.</p>
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+
+{% endblock %}

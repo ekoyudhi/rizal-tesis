@@ -5,18 +5,20 @@ import random
 
 class Awal(Page):
     def before_next_page(self):
-        self.participant.vars['periode'] = Constants.num_rounds
-        r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
-        r_list.sort()
-        idx = 1
-        for r in r_list:
-            self.participant.vars['rand_audit_'+str(idx)] = r
-            idx+=1
-            #self.participant.vars['rand_audit_2'] = r_list[1]
-            #self.participant.vars['rand_audit_3'] = r_list[2]
+        if self.round_number == 1:
+            self.participant.vars['periode'] = Constants.num_rounds
+            r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
+            r_list.sort()
+            self.participant.vars['audit'] = r_list
+            idx = 1
+            for r in r_list:
+                self.participant.vars['rand_audit_'+str(idx)] = r
+                idx+=1
+                #self.participant.vars['rand_audit_2'] = r_list[1]
+                #self.participant.vars['rand_audit_3'] = r_list[2]
 
-    def is_displayed(self):
-        return self.round_number == 1
+    # def is_displayed(self):
+    #     return self.round_number == 1
     
     def vars_for_template(self):
         r = self.round_number
@@ -24,8 +26,14 @@ class Awal(Page):
 
 class Notif(Page):
     def is_displayed(self):
-        return self.round_number == 1
-    pass
+        treatment = self.session.config['treatment']
+        displayed = False
+        if treatment == 0:
+            displayed = False
+        else:
+            displayed = True
+        
+        return displayed
 
 class Ambilwaktu(Page):
     form_model = 'player'
@@ -49,7 +57,10 @@ class Ambilwaktu(Page):
     
     def vars_for_template(self):
         r = self.round_number
-        return {'round':r}
+        au = self.participant.vars['audit']
+        return {'round':r,
+                'audit':au,
+                'tarif_pajak': Constants.tarif_pajak}
 
 class Maingame(Page):
     form_model = 'player'
@@ -69,26 +80,33 @@ class Maingame(Page):
         return{'legend_list': legend_list,
                'task_list': task_list,
                'task_width': task_width,
-               'round':r}
+               'round':r,
+               'tarif_pajak': Constants.tarif_pajak}
 
 class Hasil(Page):
     def vars_for_template(self):
         r = self.round_number
-        return {'round':r}
+        base_omset = self.participant.vars['base_omset']
+        base_biaya = self.participant.vars['base_biaya']
+        return {'round':r,
+                'base_omset': base_omset,
+                'base_biaya': base_biaya,
+                'tarif_pajak': Constants.tarif_pajak}
 
 class Laporpajak(Page):
     form_model = 'player'
     form_fields = ['omset_input','prefill_persen','payoff_awal']
 
-    def get_timeout_seconds(player):
-        waktu = 60
-        return waktu
+    # def get_timeout_seconds(player):
+    #     waktu = 60
+    #     return waktu
 
     def vars_for_template(self):
         r = self.round_number
         treatment = self.session.config['treatment']
         return {'round':r,
-                'treatment':treatment}
+                'treatment':treatment,
+                'tarif_pajak': Constants.tarif_pajak}
 
     def before_next_page(self):
         self.participant.vars['payoff_awal_'+ str(self.round_number)] = self.player.payoff_awal
@@ -125,9 +143,10 @@ class Periksapajak(Page):
 
     def vars_for_template(self):
         r = self.round_number
-        return {'round':r}
+        return {'round':r,
+                'tarif_pajak': Constants.tarif_pajak}
     
 
 
-page_sequence = [Awal, Notif, Ambilwaktu, Maingame, Hasil, Laporpajak, Periksapajak]
+page_sequence = [Notif, Awal, Ambilwaktu, Maingame, Hasil, Laporpajak, Periksapajak]
 #page_sequence = [Awal, Notif, Ambilwaktu, Periksapajak]

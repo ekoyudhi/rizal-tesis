@@ -20,12 +20,30 @@ SESSION_CONFIGS = [
         'app_sequence': ['consent','instruction','game', 'after_survey'],
     },
     {
+        'name': 'consent',
+        'display_name': 'consent',
+        'num_demo_participants':1,
+        'app_sequence' : ['consent']
+    },
+    {
+        'name': 'instruction',
+        'display_name': 'instruction',
+        'num_demo_participants':1,
+        'app_sequence' : ['instruction']
+    },
+    {
         'name': 'game',
-        'display_name': 'Games Dev',
+        'display_name': 'game',
         'num_demo_participants':1,
         'app_sequence' : ['game']
     },
-        {
+    {
+        'name': 'after_survey',
+        'display_name': 'after_survey',
+        'num_demo_participants':1,
+        'app_sequence' : ['after_survey']
+    },
+    {
         'name': 'game_after_survey',
         'display_name': 'Game plus After Survey',
         'num_demo_participants':1,

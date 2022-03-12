@@ -5,10 +5,19 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page, WaitPage
 from .models import Constants, Player
 
+class Kuesioner(Page):
+    pass
+
+class Kuesioner2(Page):
+    pass
 
 class Survey(Page):
     form_model = 'player'
-    form_fields = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11']
+    form_fields = ['s1','s2','s3','s4','s5','s6','s7','s8','s9']
+
+class Survey2(Page):
+    form_model = 'player'
+    form_fields = ['s11','s12','s13','s14','s15','s16','s17','s18']
 
 class Ambilpay(Page):
     form_model = 'player'
@@ -40,5 +49,5 @@ class Hasilpay(Page):
     pass
 
 
-page_sequence = [Survey, Ambilpay, Prosespay ,Hasilpay]
+page_sequence = [Kuesioner, Survey, Kuesioner2, Survey2, Ambilpay, Prosespay, Hasilpay]
 #page_sequence = [Prosespay]

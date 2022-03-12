@@ -1,0 +1,55 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Instruksi Eksperimen (lanjutan)
+{% endblock %}
+
+{% block content %}
+<p><h5><b>2. Contoh Sebuah Periode</b></h5></p>
+<p>Anda akan menghadapi layar sebagai berikut di sebuah periode yang Anda mainkan dengan urutan sebagai berikut:</p>
+<p><u>1) Dimulai dengan mengerjakan game huruf random seperti penjelasan sebelumnya</u></p>
+<p><u>a. Memilih mode waktu</u></p>
+<img src="https://i.ibb.co/v1Q2tQC/2022-03-12-125406.jpg" width="600" height="400">
+<p><u>b. Mengisi jawaban yang benar</u></p>
+<img src="https://i.ibb.co/vkHD26S/2022-03-12-131338.jpg" width="600" height="400">
+<p><u>2) Memeriksa hasil pendapatan Anda dari game tersebut</u></p>
+<img src="https://i.ibb.co/bmgV81r/2022-03-12-125508.jpg" width="600" height="400">
+<p><u>3) Melaporkan pajak penghasilan Anda</u></p>
+<img src="https://i.ibb.co/W0XvFjG/2022-03-12-125536.jpg" width="600" height="400">
+<p><u>4) Akan muncul notifikasi jika periode pelaporan Anda ini masuk dalam 3 dari 10 periode yang diperiksa sebagaimana penjelasan sebelumnya</u></p>
+<img src="https://i.ibb.co/xYc294Z/2022-03-12-125607.jpg" width="600" height="400">
+<p>Rangkain nomor 1 sampe dengan 4 adalah satu periode dan akan Anda lakukan sebanyak 3 Periode Latihan + 10 Periode Game inti.</p>
+<p>Setelah selesai semua periode maka akan dilanjutkan dengan kuesioner singkat dan input angka random untuk pencairan pendapatan dalam rupiah.</p>
+
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+
+{% endblock %}

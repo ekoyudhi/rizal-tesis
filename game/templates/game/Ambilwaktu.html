@@ -33,7 +33,7 @@ table.pre, td.pre, th.pre {
 
 {% block content %}
 
-    <p>Periode : {{round}}</p>
+    <h5>Periode Inti ke-{{round}}</h5>
     <p>
       Berikut adalah game huruf random dengan waktu permainan setiap ronde tiga pilihan mode waktu yaitu 30, 45, atau 60 detik. Masing-masing mode waktu mewakili biaya atau cost yang harus dikeluarkan, setiap jawaban benar untuk masing-masing mode waktu memiliki poin berbeda yang mewakili omset yang didapatkan yaitu:
       <br>
@@ -54,6 +54,6 @@ table.pre, td.pre, th.pre {
             <input class="form-check-input" type="radio" id="id_waktu-2" name="waktu" value="60">
             <label for="id_waktu-2">60 Detik</label><br><br>
     </p>
-    {% next_button %}
+    <button class="otree-btn-next btn btn-primary">Lanjut</button>
 
 {% endblock %}

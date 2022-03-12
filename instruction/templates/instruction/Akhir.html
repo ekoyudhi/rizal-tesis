@@ -5,13 +5,14 @@
 {% endblock %}
 
 {% block title %}
-    Akhir Instruksi
+    Perhatian!
 {% endblock %}
 
 {% block content %}
-    <p>
-      Anda telah menyelesaikan latihan/uji coba game sebanyak 3 kali/ronde. Setalah ini adalah game yang sebenarnya
-    </p>
-    {% next_button %}
+<div class="alert alert-warning" role="alert">
+  Perhatian! Sesi latihan telah usai. Anda akan mulai masuk ke permainan riil di periode berikutnya. Segala keputusan Anda akan berpengaruh pada pendapatan Anda dari eksperimen ini.
+</div>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami tata cara memainkan eksperimen ini.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
 
 {% endblock %}

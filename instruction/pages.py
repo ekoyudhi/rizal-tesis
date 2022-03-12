@@ -2,6 +2,30 @@ from otree.api import Currency as c, currency_range
 from ._builtin import Page
 from .models import Constants
 
+class Instruksi1(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instruksi2(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instruksi3(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instruksi4(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instruksi5(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
+class Instruksi6(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
 class Pengantar(Page):
     #pass
     def is_displayed(self):
@@ -19,8 +43,10 @@ class Pengantar(Page):
         return error_messages
 
 class Persiapan(Page):
-    def is_displayed(self):
-        return self.round_number == 1
+    def vars_for_template(self):
+        r = self.round_number
+        return {'round':r,
+                'tarif_pajak': Constants.tarif_pajak}
 
 class Pilihwaktu(Page):
     #pass
@@ -45,7 +71,8 @@ class Pilihwaktu(Page):
     
     def vars_for_template(self):
         r = self.round_number
-        return {'round':r}
+        return {'round':r,
+                'tarif_pajak': Constants.tarif_pajak}
     
 class Task(Page):
     form_model = 'player'
@@ -65,13 +92,19 @@ class Task(Page):
         return{'legend_list': legend_list,
                'task_list': task_list,
                'task_width': task_width,
-               'round':r}
+               'round':r,
+               'tarif_pajak': Constants.tarif_pajak}
 
 class Results(Page):
     #pass
     def vars_for_template(self):
         r = self.round_number
-        return {'round':r}
+        base_omset = self.participant.vars['base_omset']
+        base_biaya = self.participant.vars['base_biaya']
+        return {'round':r,
+                'base_omset': base_omset,
+                'base_biaya': base_biaya,
+                'tarif_pajak': Constants.tarif_pajak}
 
 class Lapor(Page):
     #pass
@@ -80,11 +113,12 @@ class Lapor(Page):
 
     def vars_for_template(self):
         r = self.round_number
-        return {'round':r}
+        return {'round':r,
+                'tarif_pajak': Constants.tarif_pajak}
 
 class Akhir(Page):
     def is_displayed(self):
-        return self.round_number == 3
+        return self.round_number == Constants.num_rounds
 
 
-page_sequence = [Pengantar, Persiapan, Pilihwaktu, Task, Results, Lapor, Akhir]
+page_sequence = [Instruksi1, Instruksi2, Instruksi3, Instruksi4, Instruksi5, Instruksi6, Pengantar, Persiapan, Pilihwaktu, Task, Results, Lapor, Akhir]

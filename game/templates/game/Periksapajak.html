@@ -6,8 +6,9 @@
 {% endblock %}
 
 {% block content %}
-<p>Periode : {{round}}</p>
-<h4>PERHATIAN</h4>
+<h5>Periode Inti ke-{{round}}</h5>
+<br>
+<h4>PERHATIAN!!!</h4>
     <p>Pada periode ini, otoritas pajak Nusa Makmur melakukan pemeriksaan terhadap pelaporan pajak Anda dengan hasil :
         <ul>
             <li><span id="compliance"></span></li>
@@ -19,7 +20,9 @@
         </ul>
 
     </p>
-    {% next_button %}
+    <br>
+    <p>Tekan tombol 'Lanjut' untuk melanjutkan</p>
+<button id="btn_lanjut" disabled="disabled" class="otree-btn-next btn btn-primary">Lanjut</button>
 <script>
     function thousands_separators(num)
     {
@@ -30,8 +33,8 @@
 
     var total_omset = {{player.total_omset}}
     var omset_input = {{player.omset_input}}
-    var total_omset_pph = 5 /1000 * total_omset
-    var omset_input_pph = 5 / 1000 * omset_input
+    var total_omset_pph = {{tarif_pajak}} * total_omset
+    var omset_input_pph = {{tarif_pajak}} * omset_input
     var compliance = false
     var denda = 0
     var restitusi = 0
@@ -63,5 +66,21 @@
     }
     document.getElementById("sp_total_payoff").textContent = thousands_separators(total_payoff)
     document.getElementById("total_payoff").value = total_payoff
+
+    var s = 10;
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+      
+      // If the count down is over, write some text 
+      if (s <= 0) {
+        clearInterval(x);
+        document.getElementById('btn_lanjut').disabled = false;
+        document.getElementById("btn_lanjut").textContent = "Lanjut"
+      } else {
+        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
+      }
+      s--;
+    }, 1000);
 </script>
 {% endblock %}

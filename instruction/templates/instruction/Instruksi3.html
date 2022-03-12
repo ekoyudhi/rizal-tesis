@@ -1,0 +1,84 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Instruksi Eksperimen (lanjutan)
+{% endblock %}
+
+{% block content %}
+<p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu (lanjutan):</p>
+<p><h5><b>g. Pelaporan Pajak</b></h5></p>
+<p>Dari penghasilan yang Anda dapatkan dari game huruf random pada tahap sebelumnya Anda melaporkan pajak dalam form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis. Berikut adalah tangkapan layar dari penelitian agar Anda dapat lebih mudah memahami.</p>
+<img src="https://i.ibb.co/W0XvFjG/2022-03-12-125536.jpg" width="600" height="400">
+
+<p>Fungsi tombol:</p>
+<ul>
+  <li>Tombol Preview Omset digunakan untuk melihat omset atau pendapatan yang Anda dapatkan dari game sebelumnya.</li>
+  <li>Jumlah pajak terutang dimunculkan sesuai omset yang Anda masukkan dalam kolom omset dengan penghitungan 10% dikali omset yang dilaporkan</li>
+  <li>Jumlah pembayaran yang mungkin didapat adalah jumlah pembayaran yang mungkin bisa Anda dapatkan sesuai data pelaporan pajak yang Anda sampaikan dengan penghitungan Laba dikurangi Pajak terutang</li>
+</ul>
+<p>Contoh penghitungan:</p>
+<p>Misal dari game huruf random yang Anda kerjakan, Anda mendapatkan hasil</p>
+<p>Omset game= 1 x 8.000.000 EU = 8.000.000 EU</p>
+<p>Biaya= 30% x 8.000.000 EU = 2.400.000 EU</p>
+<p>Laba = 8.000.000 EU – 2.400.000 EU = 5.600.000 EU</p>
+<p>Beberapa alternatif pelaporan, misalnya:</p>
+<table class="table table-bordered">
+  <tr><td>
+    a.&emsp;Anda melaporkan omset sebesar 50.000.000 EU maka penghitungan untuk Anda:<br>
+    &emsp;Omset yang dilaporkan= 50.000.000 EU<br>
+    &emsp;Pajak terutang= 10% x 50.000.000 EU = 5.000.000<br><br>
+
+    &emsp;Maka pembayaran/uang yang mungkin bisa Anda dapatkan adalah:<br>
+    &emsp;Laba – Pajak = 50.400.000 – 5.000.000 = 45.400.000 EU<br>
+  </td></tr>
+  <tr><td>
+    b.&emsp;Anda melaporkan omset sebesar 72.000.000 EU maka penghitungan untuk Anda:<br>
+    &emsp;Omset yang dilaporkan= 72.000.000 EU<br>
+    &emsp;Pajak terutang= 10% x 72.000.000 EU = 7.200.000 EU<br><br>
+
+    &emsp;Maka pembayaran/uang yang mungkin bisa Anda dapatkan adalah = <br>
+    &emsp;Laba – Pajak = 50.400.000 – 7.200.000 = 43.200.000 EU<br>
+  </td></tr>
+  <tr><td>
+    c.&emsp;Anda melaporkan omset sebesar 90.000.000 EU maka penghitungan untuk Anda:<br>
+    &emsp;Omset yang dilaporkan= 90.000.000 EU<br>
+    &emsp;Pajak terutang= 10% x 90.000.000 EU = 9.000.000 EU<br><br>
+
+    &emsp;Maka pembayaran/uang yang mungkin bisa Anda dapatkan adalah = <br>
+    &emsp;Laba – Pajak = 50.400.000 – 9.000.000 = 41.400.000 EU<br>
+  </td></tr>
+</table>
+<p>Dari contoh perhitungan tersebut, maka setiap keputusan Anda akan mempengaruhi jumlah pembayaran yang mungkin bisa Anda dapatkan sehingga Anda harus memahaminya dengan baik.</p>
+
+<br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+
+{% endblock %}

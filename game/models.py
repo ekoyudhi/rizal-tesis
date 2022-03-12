@@ -26,6 +26,7 @@ class Constants(BaseConstants):
 
     use_timeout = True
     seconds_per_period = 60
+    tarif_pajak = 0.1
 
 class Subsession(BaseSubsession):
     pass
