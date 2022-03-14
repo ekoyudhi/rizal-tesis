@@ -11,7 +11,7 @@ Instruction
 class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 3
-    name_in_url = 'instruction'
+    name_in_url = 'Instruction'
 
     letters_per_word = 1
 
@@ -41,7 +41,7 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    q1 = models.IntegerField(choices=[[1,'Indonesia'],[2,'Nusa Makmur']], label='1) Anda adalah warga negara?')
+    q1 = models.IntegerField(choices=[[1,'Irlandia'],[2,'Nusa Makmur']], label='1) Anda adalah warga negara?')
     q2 = models.IntegerField(choices=[[1,'Tidak Wajib'],[2,'Wajib']], label='2) Sebagai warga negara, Apakah Anda wajib membayar pajak?')
     q3 = models.IntegerField(choices=[[1,'10 Periode'],[2,'12 Periode']], label='3) Anda harus melaporkan pajak dalam berapa periode?')
     q4 = models.IntegerField(choices=[[1,'Laba (Rugi)'],[2,'Omset']], label='4) Dasar pengenaan Pajak')
@@ -51,7 +51,6 @@ class Player(BasePlayer):
     q8 = models.IntegerField(choices=[[1,'sebesar 100% dari selisih pajak yang kurang dibayar'],[2,'sebesar 200% dari selisih pajak yang kurang dibayar'],[3,'sebesar 300% dari selisih pajak yang kurang dibayar']], label='8) Besar total denda jika terdapat pajak yang masing kurang dibayar?')
     q9 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c']], label='9)	Jika Anda menjadi petugas pemeriksa pajak, pilih hitungan denda yang tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/Sm21jsh/tb2.jpg" alt="2022-02-21-195538" border="0" width="600" height="400"><br>Pilih jawaban di bawah')
     performance = models.IntegerField(initial=0, blank=False)
-    mistakes = models.IntegerField(initial=0, blank=False)
     waktu = models.IntegerField(widget=widgets.RadioSelect, label='Waktu', choices=[[30,'30 detik'],[45,'45 detik'],[60,'60 detik']])
     total_omset = models.FloatField(initial=0, blank=False)
     total_biaya = models.FloatField(initial=0, blank=False)

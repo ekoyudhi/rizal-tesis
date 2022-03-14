@@ -9,21 +9,39 @@
 <h5>Periode Inti ke-{{round}}</h5>
 <br>
 <h4>PERHATIAN!!!</h4>
-    <p>Pada periode ini, otoritas pajak Nusa Makmur melakukan pemeriksaan terhadap pelaporan pajak Anda dengan hasil :
+    <p>Pada periode ini, otoritas pajak Nusa Makmur melakukan pemeriksaan terhadap pelaporan pajak Anda dengan menggunakan data riil lapangan dan bukti relevan dengan hasil :
         <ul>
             <li><span id="compliance"></span></li>
             <!--li>Anda akan dikenakan denda (DD) sebesar <span id="denda"></span> 20.000.000 EU</li-->
             <!--li>Anda mendapatkan pengembalian pajak sebesar <span id="restitusi"></span> 20.000.000 EU</li-->
             <li id="keterangan"></li>
             <input type="hidden" id="total_payoff" name="total_payoff" />
-            <li>Pay off yang dapat Anda terima untuk periode ini menjadi = <span id="sp_total_payoff"></span> EU</li>
+            <input type="hidden" id="audit" name="audit" />
+            <input type="hidden" id="denda" name="denda" />
+            <input type="hidden" id="restitusi" name="restitusi" />
+            <li>Pembayaran yang dapat Anda terima untuk periode ini menjadi = <span id="pay_off_awal"></span> EU <span id="tanda"></span> <span id="tambahan"></span> EU = <span id="sp_total_payoff"></span> EU</li>
         </ul>
 
     </p>
-    <br>
+    <br><br><br>
     <p>Tekan tombol 'Lanjut' untuk melanjutkan</p>
 <button id="btn_lanjut" disabled="disabled" class="otree-btn-next btn btn-primary">Lanjut</button>
 <script>
+    var s = {{wait_seconds}};
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+    
+    // If the count down is over, write some text 
+    if (s <= 0) {
+        clearInterval(x);
+        document.getElementById('btn_lanjut').disabled = false;
+        document.getElementById("btn_lanjut").textContent = "Lanjut"
+    } else {
+        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
+    }
+    s--;
+    }, 1000);
     function thousands_separators(num)
     {
         var num_parts = num.toString().split(".");
@@ -40,47 +58,47 @@
     var restitusi = 0
     var payoff_awal = {{player.payoff_awal}}
     var total_payoff = 0
+    var tanda = ""
     if (total_omset -  omset_input > 0) {
         compliance = false;
         denda = 2 * (total_omset_pph - omset_input_pph)
         restitusi = 0
         total_payoff = payoff_awal - denda
+        tanda = "-"
     } else if (total_omset - omset_input == 0) {
         compliance = true;
         denda = 0
         restitusi = 0
         total_payoff = payoff_awal
+        tanda = "+"
     } else {
         compliance = true;
         denda = 0
         restitusi = omset_input_pph - total_omset_pph
         total_payoff = payoff_awal + restitusi
+        tanda = "+"
     }
 
     if (compliance) {
-        document.getElementById("compliance").textContent = "Patuh"
-        document.getElementById("keterangan").textContent = "Anda mendapatkan pengembalian pajak sebesar "+ thousands_separators(restitusi)+" EU"
+        document.getElementById("compliance").textContent = "Patuh";
+        if (restitusi > 0) {
+            document.getElementById("keterangan").textContent = "Anda mendapatkan pengembalian pajak sebesar "+ thousands_separators(restitusi)+" EU";
+        } else {
+            document.getElementById("keterangan").textContent = "Anda tidak mendapatkan pengembalian maupun denda";
+        }
+        document.getElementById("tambahan").textContent = thousands_separators(restitusi);
+        document.getElementById("restitusi").value = restitusi;
     } else {
-        document.getElementById("compliance").textContent = " Tidak Patuh"
-        document.getElementById("keterangan").textContent = "Anda akan dikenakan denda (DD) sebesar " + thousands_separators(denda) + " EU"
+        document.getElementById("compliance").textContent = " Tidak Patuh";
+        document.getElementById("keterangan").textContent = "Anda akan dikenakan denda sebesar " + thousands_separators(denda) + " EU";
+        document.getElementById("tambahan").textContent = thousands_separators(denda);
+        document.getElementById("denda").value = denda;
     }
-    document.getElementById("sp_total_payoff").textContent = thousands_separators(total_payoff)
-    document.getElementById("total_payoff").value = total_payoff
+    document.getElementById("sp_total_payoff").textContent = thousands_separators(total_payoff);
+    document.getElementById("total_payoff").value = total_payoff;
+    document.getElementById("tanda").textContent = tanda;
+    document.getElementById("pay_off_awal").textContent = thousands_separators(payoff_awal);
+    document.getElementById("audit").value = 'ya';
 
-    var s = 10;
-
-    // Update the count down every 1 second
-    var x = setInterval(function() {
-      
-      // If the count down is over, write some text 
-      if (s <= 0) {
-        clearInterval(x);
-        document.getElementById('btn_lanjut').disabled = false;
-        document.getElementById("btn_lanjut").textContent = "Lanjut"
-      } else {
-        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
-      }
-      s--;
-    }, 1000);
 </script>
 {% endblock %}

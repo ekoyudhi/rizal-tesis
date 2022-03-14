@@ -1,0 +1,42 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Instruksi Eksperimen (lanjutan)
+{% endblock %}
+
+{% block content %}
+<br>
+<br>
+<p>Instruksi eksperimen dalam bentuk pdf dapat Anda unduh di link berikut:</p>
+<br><br>
+<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+
+{% endblock %}

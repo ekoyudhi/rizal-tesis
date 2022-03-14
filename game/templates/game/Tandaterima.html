@@ -1,0 +1,70 @@
+{% extends "global/Page.html" %}
+{% load staticfiles otree %}
+
+{% block styles %}
+<style type="text/css">
+table.pre, td.pre, th.pre {
+    border: 1px solid black;
+  }
+  
+  table.pre {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th.pre {
+    font-size: 14px /*0.75vw*/;
+    height: 2ex;
+    text-align: center;
+    background-color: rgb(200, 200, 200);
+  }
+  
+  td.pre {
+    font-size: 14px /*0.5vw*/;
+    height: 3.5ex;
+    text-align: center;
+  }
+</style>
+{% endblock %}
+
+{% block title %}
+    Tanda Terima Pelaporan Pajak
+{% endblock %}
+
+{% block content %}
+<h5>Periode Inti ke-{{round}}</h5>
+<br><br>
+<table class="table table-borderless">
+    <tr><td></td><td width="60%" style="text-align: center; border: 1px solid black; background-color: cornflowerblue;">Pelaporan Pajak Penghasilan<br>Otoritas Pajak Nusa Makmur</td><td></td width="40%"></tr>
+    <tr><td></td><td style="text-align: center; border: 1px solid black; background-color: aqua;">Berikut Bukti Pelaporan Pajak Anda<br>
+    -------------------------------------------------<br>
+    Periode : {{round}}<br>
+    Status SPT : <span id="status"></span><br>
+    Omset dilaporkan : <span id="omset"></span> EU<br>
+    Pajak yang dibayarkan : <span id="pph"></span>  EU</td><td></td></tr>
+    <tr><td></td><td style="text-align: center; border: 1px solid black; background-color: aqua;">Terima kasih telah menyampaikan Laporan Pajak Anda</td><td></td></tr>
+</table>
+<br><br><br>
+<p>Tekan tombol 'Lanjut' untuk melanjutkan ke tahap berikutnya.</p>
+<button class="otree-btn-next btn btn-primary">Lanjut</button>
+<script lang="text/javascript">
+    function thousands_separators(num)
+    {
+        var num_parts = num.toString().split(".");
+        num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        return num_parts.join(".");
+    }
+    var status = ""
+    if ({{omset}} == 0) {
+        status = "Nihil"
+    } else if ({{omset}} > 0) {
+        status = "Kurang Bayar"
+    } else {
+        status = "Lebih Bayar"
+    }
+    document.getElementById("status").textContent = status
+    document.getElementById("omset").textContent = thousands_separators({{omset}})
+    document.getElementById("pph").textContent = thousands_separators({{pph}})
+</script>
+
+{% endblock %}

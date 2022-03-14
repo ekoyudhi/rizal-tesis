@@ -26,6 +26,10 @@ class Instruksi6(Page):
     def is_displayed(self):
         return self.round_number == 1
 
+class Instruksi7(Page):
+    def is_displayed(self):
+        return self.round_number == 1
+
 class Pengantar(Page):
     #pass
     def is_displayed(self):
@@ -64,7 +68,7 @@ class Pilihwaktu(Page):
             self.participant.vars['base_biaya'] = 45
         elif waktu == 60:
             self.participant.vars['base_omset'] = 5500000
-            self.participant.vars['base_biaya'] = 50
+            self.participant.vars['base_biaya'] = 60
         else:
             self.participant.vars['base_omset'] = 0
             self.participant.vars['base_biaya'] = 0
@@ -76,7 +80,7 @@ class Pilihwaktu(Page):
     
 class Task(Page):
     form_model = 'player'
-    form_fields = ['performance', 'mistakes', 'total_omset', 'total_biaya']
+    form_fields = ['performance', 'total_omset', 'total_biaya']
     #if Constants.use_timeout:
     #    #timeout_seconds = Constants.seconds_per_period
     
@@ -120,5 +124,29 @@ class Akhir(Page):
     def is_displayed(self):
         return self.round_number == Constants.num_rounds
 
+class Tandaterima(Page):
+    def vars_for_template(self):
+        r = self.round_number
+        omset = self.player.omset_input
+        pph = Constants.tarif_pajak * omset
+        return {'round':r,
+                'tarif_pajak': Constants.tarif_pajak,
+                'omset':omset,
+                'pph':pph}
 
-page_sequence = [Instruksi1, Instruksi2, Instruksi3, Instruksi4, Instruksi5, Instruksi6, Pengantar, Persiapan, Pilihwaktu, Task, Results, Lapor, Akhir]
+
+page_sequence = [Instruksi1, 
+                Instruksi2, 
+                Instruksi3, 
+                Instruksi4, 
+                Instruksi5, 
+                Instruksi6,
+                Instruksi7,
+                Pengantar, 
+                Persiapan, 
+                Pilihwaktu, 
+                Task, 
+                Results, 
+                Lapor,
+                Tandaterima,
+                Akhir]

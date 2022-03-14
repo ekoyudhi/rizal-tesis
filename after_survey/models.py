@@ -16,7 +16,7 @@ After Survey
 
 
 class Constants(BaseConstants):
-    name_in_url = 'after_survey'
+    name_in_url = 'AfterSurvey'
     players_per_group = None
     num_rounds = 1
 
@@ -38,11 +38,11 @@ class Player(BasePlayer):
     s6 = models.IntegerField(choices=[[1,"Kurang dari 10%"],[2,"20%"],[3,"30%"],[4,"40%"],[5,"50%"],[6,"Lebih dari 50%"]], label="6) Menurut Anda, berapa besar probabilitas dari kemungkinan diperiksa yang Anda rasakan dalam game ini?")
     s7 = models.IntegerField(choices=[[1,"Tidak Adil"],[2,"Cukup Adil"],[3,"Adil"],[4,"Sangat Adil"]], label="7) Seberapa adilkah penghitungan pajak dalam penelitian ini? (tarif pajak dikali dengan omset, bukan dikali laba)")
     s8 = models.IntegerField(choices=[[1,"Tidak Mudah"],[2,"Cukup Mudah"],[3,"Mudah"],[4,"Sangat Mudah"]], label="8) Seberapa mudahkah penghitungan pajak dalam penelitian ini?")
-    s9 = models.IntegerField(choices=[[1,"Tidak Setuju"],[2,"Cukup Setuju"],[3,"Setuju"],[4,"Sangat Setuju"]], label="9) Seberapa setuju Anda dengan penurunan tarif dari 20% ke 10% dalam penelitian ini?")
+    s9 = models.IntegerField(choices=[[1,"Tidak Setuju"],[2,"Cukup Setuju"],[3,"Setuju"],[4,"Sangat Setuju"]], label="9) Seberapa setuju Anda dengan penurunan tarif dari 20% ke 10% di negara Nusa Makmur?")
 
     s11 = models.IntegerField(label="1) Umur")
     s12 = models.IntegerField(choices=[[1,'Laki-laki'],[2,'Perempuan']], label='2) Jenis Kelamin')
-    s13 = models.IntegerField(choices=[[1,'Sarjana (S1/D4)'],[2,'Magister (S2)'],[3,'Doktoral (S3)']], label='3) Tingkat pendidikan yang sedang berlangsung')
+    s13 = models.IntegerField(choices=[[1,'Diploma 3 (D3)'],[2,'Sarjana (S1/D4)'],[3,'Magister (S2)'],[4,'Doktoral (S3)']], label='3) Tingkat pendidikan yang sedang berlangsung')
     s14 = models.StringField(label="4) Fakultas")
     s15 = models.StringField(label="5) Program Studi")
     s16 = models.IntegerField(choices=[[1,'Di bawah 1 juta'],[2,'1 juta s.d 2,5 juta'],[3,'2,5 jt s.d 5 jt'],[4,'di atas 5 jt']], label='6) Range Biaya Hidup/Uang Saku per bulan')

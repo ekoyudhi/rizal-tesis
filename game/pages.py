@@ -16,6 +16,8 @@ class Awal(Page):
                 idx+=1
                 #self.participant.vars['rand_audit_2'] = r_list[1]
                 #self.participant.vars['rand_audit_3'] = r_list[2]
+            t_4 = random.sample([1,1,1,2,2,2,2,3,3,3],10)
+            self.participant.vars['treatment_4'] =  t_4
 
     # def is_displayed(self):
     #     return self.round_number == 1
@@ -31,9 +33,16 @@ class Notif(Page):
         if treatment == 0:
             displayed = False
         else:
-            displayed = True
+            if self.round_number == 1:
+                displayed = True
+            else:
+                displayed = False
         
         return displayed
+    
+    def vars_for_template(self):
+        wait_seconds = self.session.config['wait_seconds']
+        return {'wait_seconds': wait_seconds}
 
 class Ambilwaktu(Page):
     form_model = 'player'
@@ -50,7 +59,7 @@ class Ambilwaktu(Page):
             self.participant.vars['base_biaya'] = 45
         elif waktu == 60:
             self.participant.vars['base_omset'] = 5500000
-            self.participant.vars['base_biaya'] = 50
+            self.participant.vars['base_biaya'] = 60
         else:
             self.participant.vars['base_omset'] = 0
             self.participant.vars['base_biaya'] = 0
@@ -64,7 +73,7 @@ class Ambilwaktu(Page):
 
 class Maingame(Page):
     form_model = 'player'
-    form_fields = ['performance', 'mistakes', 'total_omset', 'total_biaya']
+    form_fields = ['performance', 'total_omset', 'total_biaya']
     #if Constants.use_timeout:
     #    #timeout_seconds = Constants.seconds_per_period
     
@@ -92,21 +101,50 @@ class Hasil(Page):
                 'base_omset': base_omset,
                 'base_biaya': base_biaya,
                 'tarif_pajak': Constants.tarif_pajak}
+    
+    def before_next_page(self):
+        treatment = self.session.config['treatment']
+        def get_prefilled(treatment):
+            if treatment == 0:
+                prefilled_persen = 0
+            elif treatment == 1:
+                prefilled_persen = random.randint(25,99)
+            elif treatment == 2:
+                prefilled_persen = 100
+            elif treatment == 3:
+                prefilled_persen = random.randint(101,175)
+            return prefilled_persen
+
+        if treatment == 4:
+            t_4 = self.participant.vars['treatment_4']
+            prefilled_persen = get_prefilled(t_4[self.round_number-1])
+        else:
+            prefilled_persen = get_prefilled(treatment)
+        
+        prefilled_omset = round(prefilled_persen / 100 * self.player.total_omset, -3)
+
+        self.participant.vars['prefill_persen'] = prefilled_persen
+        self.participant.vars['prefill_omset'] = prefilled_omset
+        self.player.prefill_persen = prefilled_persen
 
 class Laporpajak(Page):
     form_model = 'player'
-    form_fields = ['omset_input','prefill_persen','payoff_awal']
+    form_fields = ['omset_input','payoff_awal']
 
     # def get_timeout_seconds(player):
     #     waktu = 60
     #     return waktu
-
+        
     def vars_for_template(self):
         r = self.round_number
         treatment = self.session.config['treatment']
+        prefilled_omset = self.participant.vars['prefill_omset']
+        wait_seconds = self.session.config['wait_seconds']
         return {'round':r,
                 'treatment':treatment,
-                'tarif_pajak': Constants.tarif_pajak}
+                'tarif_pajak': Constants.tarif_pajak,
+                'prefilled_omset': prefilled_omset,
+                'wait_seconds': wait_seconds}
 
     def before_next_page(self):
         self.participant.vars['payoff_awal_'+ str(self.round_number)] = self.player.payoff_awal
@@ -115,7 +153,7 @@ class Laporpajak(Page):
 #randomlist 3 dari 0 s.d. 10
 class Periksapajak(Page):
     form_model = 'player'
-    form_fields = ['total_payoff']
+    form_fields = ['total_payoff', 'audit', 'restitusi', 'denda']
 
     def is_displayed(self):
         r = list()
@@ -143,10 +181,22 @@ class Periksapajak(Page):
 
     def vars_for_template(self):
         r = self.round_number
+        wait_seconds = self.session.config['wait_seconds']
         return {'round':r,
-                'tarif_pajak': Constants.tarif_pajak}
-    
+                'tarif_pajak': Constants.tarif_pajak,
+                'audit': 'ya',
+                'wait_seconds': wait_seconds}
+
+class Tandaterima(Page):
+    def vars_for_template(self):
+        r = self.round_number
+        omset = self.player.omset_input
+        pph = Constants.tarif_pajak * omset
+        return {'round':r,
+                'tarif_pajak': Constants.tarif_pajak,
+                'omset':omset,
+                'pph':pph}
 
 
-page_sequence = [Notif, Awal, Ambilwaktu, Maingame, Hasil, Laporpajak, Periksapajak]
+page_sequence = [Notif, Awal, Ambilwaktu, Maingame, Hasil, Laporpajak, Tandaterima, Periksapajak]
 #page_sequence = [Awal, Notif, Ambilwaktu, Periksapajak]

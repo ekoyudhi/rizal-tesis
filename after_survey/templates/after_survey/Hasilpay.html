@@ -31,8 +31,13 @@
         return num_parts.join(".");
     }
 
-    document.getElementById("payoff_real1").textContent = thousands_separators({{player.payoff_real}}-15000)
-    document.getElementById("payoff_real").textContent = thousands_separators({{player.payoff_real}})
+    if ({{player.payoff_real}}-15000 > 0) {
+        document.getElementById("payoff_real1").textContent = thousands_separators({{player.payoff_real}}-15000)
+        document.getElementById("payoff_real").textContent = thousands_separators({{player.payoff_real}})
+    } else {
+        document.getElementById("payoff_real1").textContent = thousands_separators(0)
+        document.getElementById("payoff_real").textContent = thousands_separators(15000)
+    }
     var mtd = {{player.s18}}
     var metode = ""
     if (mtd == 1) {
