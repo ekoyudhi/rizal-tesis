@@ -123,9 +123,13 @@ td {
 }
 
 .table-ku tbody tr td {
-  font-size: 0.8vw;
+  font-size: 1.1vw;
   text-align: left;
   border: 0px white;
+}
+.alert {
+  padding: 0;
+  margin-top: 2px;
 }
 </style>
 {% endblock %}
@@ -133,7 +137,7 @@ td {
 
 
 {% block title %}
-    Uji Coba Game
+    Game - Periode latihan ke-{{round}}
 {% endblock %}
 
 {% block content %}
@@ -151,7 +155,11 @@ td {
   <tr>
     <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled /> EU</td>
   </tr>
+  <tr>
+    <td>Laba</td><td>:</td><td><input type="text" name="view_laba" id="view_laba" disabled /> EU</td>
+  </tr>
 </table>
+<br>
 <div class="test" id="hide_task">
 
 <!-- <form id="test_frm"> -->
@@ -159,7 +167,7 @@ td {
 <div class="task-subcontainer">
     <div style="font-size: 1.8vw">Word: &nbsp;&nbsp;&nbsp;&nbsp;   </div>
         {% for l in task_list%}
-                <div class="task-letter" id="task_letter_{{l}}"></div>
+                <div class="task-letter" id="task_letter_{{l}}" style="font-weight: bold; font-size: 3vw;"></div>
         {% endfor %}
     <div style="font-size: 1.8vw">Code:   &nbsp;&nbsp;&nbsp;&nbsp;  </div>
         {% for l in task_list%}
@@ -174,7 +182,7 @@ td {
 <div class="otree-form-errors" id="error-form"></div>
 </div>
 
-<br><br>
+<br>
 
 <table>
 <tr>
@@ -219,6 +227,7 @@ td {
   document.getElementById("total_biaya").value = 0; //Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value)
   document.getElementById("view_omset").value = 0; //thousands_separators(Number(document.getElementById("base_omset").value))
   document.getElementById("view_biaya").value = 0; //thousands_separators(Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value))
+  document.getElementById("view_laba").value = 0
 
   $('#task_code_0').focus();
 
@@ -253,7 +262,8 @@ function myFunction() {
       document.getElementById("total_biaya").value = temp_biaya;
       document.getElementById("view_omset").value = thousands_separators(temp_omset);
       document.getElementById("view_biaya").value = thousands_separators(temp_biaya);
-
+      document.getElementById("view_laba").value = thousands_separators(temp_omset - temp_biaya)
+      
       dict=genNewDict();
       shuffle(legend_letters)
       for (var i = 0; i <= 25; i++) {

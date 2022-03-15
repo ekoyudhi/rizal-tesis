@@ -36,13 +36,12 @@ table.pre, td.pre, th.pre {
 <br><br>
 <table class="table table-borderless">
     <tr><td></td><td width="60%" style="text-align: center; border: 1px solid black; background-color: cornflowerblue;">Pelaporan Pajak Penghasilan<br>Otoritas Pajak Nusa Makmur</td><td></td width="40%"></tr>
-    <tr><td></td><td style="text-align: center; border: 1px solid black; background-color: aqua;">Berikut Bukti Pelaporan Pajak Anda<br>
+    <tr><td></td><td style="text-align: center; border: 1px solid black; background-color: rgb(197, 253, 253);">Berikut Bukti Pelaporan Pajak Anda<br>
     -------------------------------------------------<br>
-    Periode : {{round}}<br>
-    Status SPT : <span id="status"></span><br>
+    Periode : Inti ke-{{round}}<br>
     Omset dilaporkan : <span id="omset"></span> EU<br>
     Pajak yang dibayarkan : <span id="pph"></span>  EU</td><td></td></tr>
-    <tr><td></td><td style="text-align: center; border: 1px solid black; background-color: aqua;">Terima kasih telah menyampaikan Laporan Pajak Anda</td><td></td></tr>
+    <tr><td></td><td style="text-align: center; border: 1px solid black; background-color: rgb(197, 253, 253);">Terima kasih telah menyampaikan Laporan Pajak Anda</td><td></td></tr>
 </table>
 <br><br><br>
 <p>Tekan tombol 'Lanjut' untuk melanjutkan ke tahap berikutnya.</p>
@@ -54,15 +53,6 @@ table.pre, td.pre, th.pre {
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return num_parts.join(".");
     }
-    var status = ""
-    if ({{omset}} == 0) {
-        status = "Nihil"
-    } else if ({{omset}} > 0) {
-        status = "Kurang Bayar"
-    } else {
-        status = "Lebih Bayar"
-    }
-    document.getElementById("status").textContent = status
     document.getElementById("omset").textContent = thousands_separators({{omset}})
     document.getElementById("pph").textContent = thousands_separators({{pph}})
 </script>

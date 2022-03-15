@@ -34,22 +34,24 @@ table.lap, td.lap, th.lap {
 {% block content %}
 <h5>Periode latihan ke-{{round}}</h5>
 <p>
-    Dari penghasilan yang Anda dapatkan dari game sebelumnya Anda diharapkan melaporkan pajak dengan form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis
+  Dari penghasilan yang Anda dapatkan dari game sebelumnya Anda diharapkan melaporkan pajak dengan form berikut.</p>
+  <p>Hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis
 </p>
 <br>
 <input id="preview" type="button" class="btn btn-danger" onclick="myFunction()" value="Preview Omset" />&emsp;&emsp;<span id="prev"></span>
 
 <table class="lap">
     <tr><td class="lap">
-    <h5>Pelaporan SPT</h5>
+    <h5>Pelaporan Pajak Penghasilan</h5>
     <br>
     <input type="hidden" id="omset_input" name="omset_input" />
-    Masukkan omset&emsp;&emsp;&emsp;&emsp;: <input type="text" id="txt_omset_input" name="txt_omset_input" /> EU<br><br>
-    Jumlah pajak terutang &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled /> EU
-    <br><br>
-    Jumlah payoff yang mungkin didapat pada periode ini : <input type="text" id="total_payoff" name="total_payoff" disabled /> EU<br>
+    Omset&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <input type="text" id="txt_omset_input" name="txt_omset_input" /> EU<br><br>
+    Jumlah pajak terutang &nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled /> EU
+    <br>
     </td></tr>
 </table>
+<br>
+<p>Jumlah pendapatan bersih/pembayaran yang mungkin bisa Anda dapatkan pada periode ini : <input type="text" id="total_payoff" name="total_payoff" disabled /> EU</p>
 <br>
 <p>Pastikan kembali bahwa pengisian pelaporan pajak benar-benar sesuai dengan keputusan Anda. </p>
 <br>

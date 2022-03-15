@@ -13,7 +13,11 @@ class Kuesioner2(Page):
 
 class Survey(Page):
     form_model = 'player'
-    form_fields = ['s1','s2','s3','s4','s5','s6','s7','s8','s9']
+    form_fields = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10']
+
+    def vars_for_template(self):
+        treatment = self.session.config['treatment']
+        return {'treatment': treatment}
 
 class Survey2(Page):
     form_model = 'player'
