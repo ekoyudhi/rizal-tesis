@@ -171,7 +171,7 @@ td {
         {% endfor %}
     <div style="font-size: 1.8vw">Code:   &nbsp;&nbsp;&nbsp;&nbsp;  </div>
         {% for l in task_list%}
-                <input class="task-code" id="task_code_{{l}}" type="number">
+                <input type="text" maxlength="2" class="task-code" id="task_code_{{l}}">
         {% endfor %}
       <input id="btnSubmit" type="button" class="btn btn-primary" onclick="myFunction()" value="Submit">
 </div>
@@ -372,6 +372,26 @@ function genNewDict() {
     
 }
 
+$("#task_code_0").keyup(function(event){
+        //var oms = str(document.getElementById("omset_input").value).replace(",","")
+        // When user select text in the document, also abort.
+        var selection = window.getSelection().toString(); 
+        if (selection !== '') {
+            return; 
+        }       
+        // When the arrow keys are pressed, abort.
+        if ($.inArray(event.keyCode, [38, 40, 37, 39]) !== -1) {
+            return; 
+        }       
+        var $this = $(this);            
+        // Get the value.
+        var input = $this.val();            
+        input = input.replace(/[\D\s\._\-]+/g, ""); 
+        input = input?parseInt(input, 10):0; 
+        $this.val(function () {
+            return (input === 0)?"":input.toLocaleString("en-US"); 
+        });
+    });
 
 </script>
 
