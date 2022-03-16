@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static %}
 
 {% block styles %}
 <style type="text/css">
@@ -43,7 +43,7 @@ table.pre, td.pre, th.pre {
 </ul>
 <br>
 <p>Berikut adalah tangkapan layar dari notifikasi hasil pemeriksaan agar Anda dapat lebih mudah memahami.</p>
-<img src="https://i.ibb.co/w0QYTNh/2022-03-14-152440.jpg" width="600" height="400">
+<img src="{% static image_6 %}" width="1024" height="768">
 
 <p>Rincian kondisi hasil pemeriksaan adalah sebagai berikut:</p>
 <table class="table table-bordered">

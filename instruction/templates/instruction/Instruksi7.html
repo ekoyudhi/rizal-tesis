@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static%}
 
 {% block styles %}
 <style type="text/css">
@@ -34,7 +34,7 @@ table.pre, td.pre, th.pre {
 {% block content %}
 <br>
 <br>
-<p>Instruksi eksperimen dalam bentuk pdf dapat Anda unduh di link berikut:</p>
+<p>Instruksi eksperimen dalam bentuk pdf dapat Anda unduh di link berikut: <a href="{% static instruksi %}" target="_blank">Download File</a></p>
 <br><br>
 <p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
 <button class="otree-btn-next btn btn-primary">Lanjut</button>

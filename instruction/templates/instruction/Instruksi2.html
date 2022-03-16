@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static %}
 
 {% block styles %}
 <style type="text/css">
@@ -38,18 +38,18 @@ table.pre, td.pre, th.pre {
 <p>Game ini terdiri dari encoding satu huruf dari 26 huruf abjad dan angka yang diacak secara random uniform. Anda harus mengalokasikan angka untuk setiap huruf abjad. Kode enkripsi dapat ditemukan dalam tabel di bawah isian angka untuk huruf yang muncul. Game ini dibagi menjadi tiga mode waktu yaitu 30, 45, atau 60 detik. Masing-masing mode waktu mewakili biaya atau cost yang harus dikeluarkan, setiap jawaban benar untuk masing-masing mode waktu memiliki poin berbeda yang mewakili omset yang didapatkan. Anda bebas memilih mode waktu sesuai dengan preferensi Anda.</p>
 <p>Berikut adalah tangkapan layar dari game agar Anda dapat lebih mudah memahami:</p>
 <p>Pilih Waktu Game</p>
-<img src="https://i.ibb.co/BLhCPnW/2022-03-15-152811.jpg" width="600" height="400">
+<img src="{% static image_1 %}" width="1024" height="768">
 <p>Misalnya Anda memilih waktu 30 detik, maka akan muncul sebagai berikut:</p>
-<img src="https://i.ibb.co/5LMvfQZ/g1.png" width="600" height="400">
+<img src="{% static image_2 %}" width="1024" height="768">
 <p>Pada contoh ini Anda sudah menjawab satu jawaban benar (lihat hasil omset dan biaya di kiri atas tangkapan layar). Satu jawaban benar pada mode 30 detik yaitu 8.000.000 EU dengan biaya sebesar 30% x 8.000.000 = 2.400.000 EU.</p>
 <p>Jawaban benar untuk code yang harus dimasukkan untuk huruf M adalah 38. Caranya dengan melihat tabel enkripsi di bawahnya dimana huruf M berada di atas angka 38.</p>
 <p>Kursor akan otomatis aktif di kotak code sehingga Anda dapat langsung menulis angka dan menekan tombol enter pada keyboard atau meng-klik tombol submit pada layar.</p>
 <p>Jika jawaban benar maka akan lanjut ke huruf random berikutnya misalnya</p>
-<img src="https://i.ibb.co/fGNFvQG/g2.png" width="600" height="400">
+<img src="{% static image_2 %}" width="1024" height="768">
 <p>Jawaban benar untuk code yang harus dimasukkan untuk huruf I adalah 28. Caranya dengan melihat tabel enkripsi di bawahnya dimana huruf I berada di atas angka 28.</p>
 <p>Huruf yang muncul dalam pertanyaan serta urutan huruf dan angka dalam tabel enkripsi dirandom dengan distribusi uniform.</p>
 <p>Setelah waktu berakhir (sesuai mode yang dipilih) maka hasil game huruf random akan muncul. Misal Anda mendapat 9 jawaban benar maka pendapatan yang saya dapatkan adalah:</p>
-<img src="https://i.ibb.co/kKcPRm1/2022-03-15-153139.jpg" width="600" height="400">
+<img src="{% static image_4 %}" width="1024" height="768">
 <p>Secara rata-rata, semakin banyak jawaban benar maka semakin banyak pembayaran yang mungkin Anda dapatkan.</p>
 <p>Hasil dari game ini yang selanjutnya akan digunakan untuk keperluan pelaporan pajak pada tahap berikutnya.</p>
 <br>

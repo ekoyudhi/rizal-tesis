@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static %}
 
 {% block styles %}
 <style type="text/css">
@@ -35,7 +35,7 @@ table.pre, td.pre, th.pre {
 <p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu (lanjutan):</p>
 <p><h5><b>g. Pelaporan Pajak</b></h5></p>
 <p>Dari penghasilan yang Anda dapatkan dari game huruf random pada tahap sebelumnya. Anda akan melaporkan pajak dalam form berikut. Untuk memudahkan, hanya field omset yang perlu Anda isi, untuk field lain akan terisi secara otomatis. Berikut adalah tangkapan layar dari penelitian agar Anda dapat lebih mudah memahami.</p>
-<img src="https://i.ibb.co/SRZ3JMd/dsBuffer.jpg" width="600" height="400">
+<img src="{% static image_5%}" width="1024" height="768">
 
 <p>Fungsi tombol:</p>
 <ul>

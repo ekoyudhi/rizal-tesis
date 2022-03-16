@@ -9,26 +9,64 @@ class Instruksi1(Page):
 class Instruksi2(Page):
     def is_displayed(self):
         return self.round_number == 1
+    
+    def vars_for_template(self):
+        return {
+            'image_1': 'images/image_1.jpg',
+            'image_2': 'images/image_2.jpg',
+            'image_3': 'images/image_3.jpg',
+            'image_4': 'images/image_4.jpg',
+        }
 
 class Instruksi3(Page):
     def is_displayed(self):
         return self.round_number == 1
+    
+    def vars_for_template(self):
+        return {
+            'image_5': 'images/image_5.jpg'
+        }
 
 class Instruksi4(Page):
     def is_displayed(self):
         return self.round_number == 1
+    
+    def vars_for_template(self):
+        return {
+            'image_6': 'images/image_6.jpg'
+        }
 
 class Instruksi5(Page):
     def is_displayed(self):
         return self.round_number == 1
+    
+    def vars_for_template(self):
+        return {
+            'image_7': 'images/image_7.jpg'
+        }
 
 class Instruksi6(Page):
     def is_displayed(self):
         return self.round_number == 1
+    
+    def vars_for_template(self):
+        return {
+            'image_8': 'images/image_8.jpg',
+            'image_9': 'images/image_9.jpg',
+            'image_10': 'images/image_10.jpg',
+            'image_11': 'images/image_11.jpg',
+            'image_12': 'images/image_12.jpg',
+            'image_13': 'images/image_13.jpg',
+        }
 
 class Instruksi7(Page):
     def is_displayed(self):
         return self.round_number == 1
+    
+    def vars_for_template(self):
+        return {
+            'instruksi': 'files/instruksi.pdf'
+        }
 
 class Pengantar(Page):
     #pass

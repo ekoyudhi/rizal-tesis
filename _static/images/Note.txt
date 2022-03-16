@@ -1,0 +1,13 @@
+Image 1		: Pilih Waktu Game
+Image 2		: time to complete
+Image 3		: Lanjutan ke huruf selanjutnya
+Image 4		: Hasil game
+Image 5		: Pelaporan Pajak
+Image 6		: Pemeriksaan Pajak
+Image 7		: Hasil Payoff
+Image 8		: Pilih Waktu Game
+Image 9		: time to complete
+Image 10	: Hasil game
+Image 11	: Pelaporan Pajak
+Image 12	: BPE
+Image 13	: Pemeriksaan Pajak
