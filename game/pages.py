@@ -40,7 +40,8 @@ class Awal(Page):
                 idx+=1
                 #self.participant.vars['rand_audit_2'] = r_list[1]
                 #self.participant.vars['rand_audit_3'] = r_list[2]
-            t_4 = random.sample([1,1,1,2,2,2,2,3,3,3],10)
+            #t_4 = random.sample([1,1,1,1,1,2,2,2,2,2,3,3,3,3,3],15)
+            t_4 = random.choices([1,2,3], k = Constants.num_rounds)
             self.participant.vars['treatment_4'] =  t_4
 
     # def is_displayed(self):

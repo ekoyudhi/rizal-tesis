@@ -155,8 +155,10 @@ class Lapor(Page):
 
     def vars_for_template(self):
         r = self.round_number
+        wait_seconds = self.session.config['wait_seconds']
         return {'round':r,
-                'tarif_pajak': Constants.tarif_pajak}
+                'tarif_pajak': Constants.tarif_pajak,
+                'wait_seconds': wait_seconds}
 
 class Akhir(Page):
     def is_displayed(self):
