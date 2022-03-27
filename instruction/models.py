@@ -19,6 +19,8 @@ class Constants(BaseConstants):
     seconds_per_period = 60
     tarif_pajak = 0.1
 
+    header = "Kontak Peneliti (Rizal) <a href='http://wa.me/628569041762' target='_blank'>http://wa.me/628569041762</a>"
+
 class Subsession(BaseSubsession):
     pass
     # dictionary = models.StringField()
@@ -41,13 +43,13 @@ class Group(BaseGroup):
     pass
 
 class Player(BasePlayer):
-    q1 = models.IntegerField(choices=[[1,'Irlandia'],[2,'Nusa Makmur']], label='1) Anda adalah warga negara?')
+    q1 = models.IntegerField(choices=[[1,'Nusa Jaya'],[2,'Nusa Makmur']], label='1) Anda adalah warga negara?')
     q2 = models.IntegerField(choices=[[1,'Tidak Wajib'],[2,'Wajib']], label='2) Sebagai warga negara, Apakah Anda wajib membayar pajak?')
-    q3 = models.IntegerField(choices=[[1,'10 Periode'],[2,'12 Periode']], label='3) Anda harus melaporkan pajak dalam berapa periode?')
-    q4 = models.IntegerField(choices=[[1,'Laba (Rugi)'],[2,'Omset']], label='4) Dasar pengenaan Pajak')
+    q3 = models.IntegerField(choices=[[1,'15 Periode'],[2,'12 Periode']], label='3) Anda harus melaporkan pajak dalam berapa periode?')
+    q4 = models.IntegerField(choices=[[1,'Laba (Rugi)'],[2,'Omset']], label='4)	Nilai pajak dihitung dari?(Dasar pengenaan Pajak)')
     q5 = models.IntegerField(choices=[[1,'Tidak ada'],[2,'Ada, dari 20% ke 10% dari Laba'],[3,'Ada, dari 10% ke 5% dari Laba'],[4,'Ada, dari 20% ke 10% dari Omset']], label='5) Apakah ada penurunan tarif, berapa nilainya?')
     q6 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c'],[4,'d']], label='6) Pilih penghitungan pajak dan pendapatan bersih yang paling tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/Kh4QQq1/tb1.jpg" alt="2022-02-21-195502" border="0" width="600" height="200"><br>Pilih jawaban di bawah')
-    q7 = models.IntegerField(choices=[[1,'30% dari total pelaporan, yaitu 3 dari 10 periode pelaporan pajak'],[2,'Tidak dijelaskan']], label='7) Berapa probabilitas pemeriksaan yang dilakukan oleh Nusa Makmur?')
+    q7 = models.IntegerField(choices=[[1,'20% s.d 40% dari total pelaporan, yaitu bisa 3, 4, 5, atau 6 dari 15 periode pelaporan pajak'],[2,'Tidak dijelaskan']], label='7) Berapa probabilitas pemeriksaan yang dilakukan oleh Nusa Makmur?')
     q8 = models.IntegerField(choices=[[1,'sebesar 100% dari selisih pajak yang kurang dibayar'],[2,'sebesar 200% dari selisih pajak yang kurang dibayar'],[3,'sebesar 300% dari selisih pajak yang kurang dibayar']], label='8) Besar total denda jika terdapat pajak yang masing kurang dibayar?')
     q9 = models.IntegerField(choices=[[1,'a'],[2,'b'],[3,'c']], label='9)	Jika Anda menjadi petugas pemeriksa pajak, pilih hitungan denda yang tepat (Anda dapat menggunakan kalkulator)<br><img src="https://i.ibb.co/Sm21jsh/tb2.jpg" alt="2022-02-21-195538" border="0" width="600" height="400"><br>Pilih jawaban di bawah')
     performance = models.IntegerField(initial=0, blank=False)

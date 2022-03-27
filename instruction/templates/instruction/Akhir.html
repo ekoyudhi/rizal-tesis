@@ -2,9 +2,11 @@
 {% load staticfiles otree %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Perhatian!
 {% endblock %}
 

@@ -2,6 +2,7 @@
 {% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,6 +29,7 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Instruksi Eksperimen (lanjutan)
 {% endblock %}
 
@@ -37,8 +39,8 @@ table.pre, td.pre, th.pre {
 <p>Merupakan kuesioner yang berisi kurang-lebih 10 pertanyaan singkat setelah Anda menyelesaikan 10 periode game. Seluruh pertanyaan harus diisi sehingga Anda dapat melanjutkan ke tahap pencairan pembayaran</p>
 
 <p><h5><b>j. Pencairan Pembayaran</b></h5></p>
-<p>Metode pencairan pembayaran dalam penelitian ini adalah hanya satu periode dari 10 periode game. Pencairan pembayaran Anda bisa jadi berasal dari periode manapun antara periode 1 sampai 10 yang dipilih secara acak dengan komputer. Maka pastikan Anda selalu mengoptimalkan keputusan Anda dalam setiap periode</p>
-<p>Pemilihan acak dilakukan dengan Anda memasukkan dua digit angka random antara 11 s.d 99 yang kemudian dienkripsi ke angka random antara 1 s.d 10 dengan distribusi uniform untuk menentukan periode game mana yang menjadi basis pembayaran Anda. Nilai pembayaran EU akan dikonversi ke rupiah dengan dibagi 1.000 dan dibulatkan dalam ribuan penuh. Pembayaran ini akan ditambah uang partisipasi sebesar 15.000. Anda dapat memilih salah satu dari opsi transfer uang untuk pembayaran Anda ke OVO atau GOPAY.</p>
+<p>Metode pencairan pembayaran dalam penelitian ini adalah hanya satu periode dari 15 periode game. Pencairan pembayaran Anda bisa jadi berasal dari periode manapun antara periode 1 sampai 15 yang dipilih secara acak dengan komputer. Maka pastikan Anda selalu mengoptimalkan keputusan Anda dalam setiap periode.</p>
+<p>Pemilihan acak dilakukan dengan Anda memasukkan dua digit angka random antara 11 s.d 99 yang kemudian dienkripsi ke angka random antara 1 s.d 15 dengan distribusi uniform untuk menentukan periode game mana yang menjadi basis pembayaran Anda. Nilai pembayaran EU akan dikonversi ke rupiah dengan dibagi 1.000 dan dibulatkan dalam ribuan penuh. Pembayaran ini akan ditambah uang partisipasi sebesar 15.000. Anda dapat memilih salah satu dari opsi transfer uang untuk pembayaran Anda ke OVO atau GOPAY.</p>
 <p>Berikut adalah tangkapan layar dari penelitian agar Anda dapat lebih mudah memahami.</p>
 <img src="{% static image_7 %}" width="1024" height="768">
 

@@ -2,6 +2,7 @@
 {% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,6 +29,7 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Instruksi Eksperimen (lanjutan)
 {% endblock %}
 
@@ -45,9 +47,9 @@ table.pre, td.pre, th.pre {
 <img src="{% static image_11 %}" width="1024" height="768">
 <p>4) Setelah menekan tombol lanjut Anda akan mendapat bukti pelaporan dengan tampilan sebagai berikut:</p>
 <img src="{% static image_12 %}" width="1024" height="768">
-<p>5) Akan muncul notifikasi jika periode pelaporan Anda ini masuk dalam 3 dari 10 periode yang diperiksa sebagaimana penjelasan sebelumnya</p>
+<p>5) Akan muncul notifikasi jika periode pelaporan Anda saat ini masuk dalam periode yang diperiksa sebagaimana penjelasan sebelumnya</p>
 <img src="{% static image_13 %}" width="1024" height="768">
-<p>Rangkaian nomor 1 sampe dengan 5 adalah satu periode dan akan Anda lakukan sebanyak 3 Periode Latihan + 10 Periode Game inti.</p>
+<p>Rangkaian nomor 1 sampe dengan 5 adalah satu periode dan akan Anda lakukan sebanyak 3 Periode Latihan + 15 Periode Game inti.</p>
 <p>Setelah selesai semua periode maka akan dilanjutkan dengan kuesioner singkat dan input angka random untuk pencairan pendapatan dalam rupiah.</p>
 
 <br>

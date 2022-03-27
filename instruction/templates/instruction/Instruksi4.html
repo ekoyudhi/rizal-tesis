@@ -2,6 +2,7 @@
 {% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,13 +29,14 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Instruksi Eksperimen (lanjutan)
 {% endblock %}
 
 {% block content %}
 <p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu (lanjutan):</p>
 <p><h5><b>h. Pemeriksaan</b></h5></p>
-<p>Pemeriksaan adalah pengujian kepatuhan atas omset yang Anda laporkan dibandingkan dengan omset yang Anda dapatkan dari game huruf random. Probabilitas pemeriksaan dalam penelitian ini sebesar 30% yang artinya Anda akan diperiksa 3 dari 10 periode pelaporan. Urutan periode pemeriksaan dilakukan secara acak.</p>
+<p>Pemeriksaan adalah pengujian kepatuhan atas omset yang Anda laporkan dibandingkan dengan omset yang Anda dapatkan dari game huruf random. Probabilitas pemeriksaan dalam penelitian ini sebesar 20% s.d 40% yang artinya jumlah periode yang diperiksa untuk pelaporan Anda adalah berkisar 3 s.d 6 dari 15 periode pelaporan inti. Jumlah dan urutan periode pemeriksaan dilakukan secara acak untuk masing-masing subjek.</p>
 <p>Anda akan mendapat notifikasi hasil pemeriksaan yang berisikan:</p>
 <ul>
   <li>Status patuh/tidak patuh</li>

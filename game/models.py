@@ -19,14 +19,16 @@ Main Game
 class Constants(BaseConstants):
     name_in_url = 'Game'
     players_per_group = None
-    num_rounds = 10
+    num_rounds = 15
     num_audit = 3
+    num_audit_max = 6
 
     letters_per_word = 1
 
     use_timeout = True
     seconds_per_period = 60
     tarif_pajak = 0.1
+    header = "Kontak Peneliti (Rizal) <a href='http://wa.me/628569041762' target='_blank'>http://wa.me/628569041762</a>"
 
 class Subsession(BaseSubsession):
     pass

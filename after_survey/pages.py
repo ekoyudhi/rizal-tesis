@@ -13,7 +13,7 @@ class Kuesioner2(Page):
 
 class Survey(Page):
     form_model = 'player'
-    form_fields = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10']
+    form_fields = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11']
 
     def vars_for_template(self):
         treatment = self.session.config['treatment']
@@ -21,14 +21,17 @@ class Survey(Page):
 
 class Survey2(Page):
     form_model = 'player'
-    form_fields = ['s11','s12','s13','s14','s15','s16','s17','s18']
+    form_fields = ['t11','t12','t13','t14','t15','t16','t17','t18']
 
 class Ambilpay(Page):
     form_model = 'player'
     form_fields = ['angka_random']
 
     def before_next_page(self):
-        periode = self.participant.vars['periode']
+        if 'periode' in self.participant.vars:
+            periode = self.participant.vars['periode']
+        else:
+            periode = 15
         list1 = list(range(1, (periode+1)))
         rnd = random.choice(list1)
         self.participant.vars['periode_terpilih'] = rnd
@@ -41,8 +44,14 @@ class Prosespay(Page):
         #player = self.player.participant.get_players()
         #player = self.player.participant.vars
         periode_terpilih = self.participant.vars['periode_terpilih']
-        payoff_awal = self.participant.vars['payoff_awal_'+str(periode_terpilih)]
-        payoff_total = self.participant.vars['total_payoff_'+str(periode_terpilih)]
+        if 'payoff_awal_'+str(periode_terpilih) in self.participant.vars:
+            payoff_awal = self.participant.vars['payoff_awal_'+str(periode_terpilih)]
+        else:
+            payoff_awal = 1000000000
+        if 'total_payoff_'+str(periode_terpilih) in self.participant.vars:
+            payoff_total = self.participant.vars['total_payoff_'+str(periode_terpilih)]
+        else:
+            payoff_total = 1000000000
         if payoff_total <= 0:
             payoff_real = 15000
         else:

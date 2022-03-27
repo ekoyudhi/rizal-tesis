@@ -1,10 +1,12 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Selamat Datang
 {% endblock %}
 
@@ -13,16 +15,18 @@
         Terima kasih atas partisipasi dalam penelitian ini. Data Anda dijamin keamanannya, analisis data akan dilakukan secara anonim. Tampilan terbaik untuk eksperimen ini adalah dengan menggunakan Laptop/PC.
     </p>
     <p>
+        Tampilan optimal untuk eksperimen ini adalah <b>dengan menggunakan Laptop/PC</b>, usahakan Anda berada di tempat yang nyaman dalam melaksanakan penelitian ini.
+    </p>
+    <p>
         Meskipun penelitian ini dilakukan secara online, diharapkan masing-masing peserta tidak berkomunikasi satu sama lain.
     </p>
     <p>
-        Anda akan menyimak instruksi permainan ini pada halaman berikutnya.
+        Anda akan dapat menyetujui informed consent dan menyimak instruksi permainan ini pada halaman berikutnya.
     </p>
     <p>Jumlah uang yang Anda akan terima pada permainan ini akan bergantung pada keputusan yang Anda buat dan parameter-parameter di dalam eksperimen. Keputusan pemain lain tidak akan berpengaruh pada poin Anda.
     </p>
-    <p>Jika ada pertanyaan dapat disampaikan ke peneliti melalui whatsapp di <a href="http://wa.me/628569041762" target="_blank">http://wa.me/628569041762</a>.
+    <p>Jika ada pertanyaan dapat disampaikan ke peneliti (Rizal) melalui whatsapp di <a href="http://wa.me/628569041762" target="_blank">http://wa.me/628569041762</a>.
     </p>
-    {{formfield 'email' label='Masukkan alamat email yang Anda gunakan untuk mendaftar dalam penelitian ini di kotak di bawah ini:'}}
     <br>
     <p>Tekan tombol 'Lanjut' jika Anda sudah siap.</p>
     <button class="otree-btn-next btn btn-primary">Lanjut</button>

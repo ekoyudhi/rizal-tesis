@@ -2,6 +2,7 @@
 {% load staticfiles otree %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,15 +29,18 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Instruksi Eksperimen
 {% endblock %}
 
 {% block content %}
-<p>Selamat datang dan terima kasih Anda telah bersedia untuk mengikuti eksperimen ini. Anda tidak dapat menggunakan fitur back page atau kembali ke halaman sebelumnya dalam eksperimen ini. Mohon pastikan Anda membaca dan memahami dengan seksama seluruh instruksi yang ada pada setiap halaman sebelum melanjutkan ke halaman berikutnya sehingga Anda dapat memahami apa yang harus Anda lakukan di dalam eksperimen ini.</p>
+<p>Selamat datang dan terima kasih Anda telah bersedia untuk mengikuti eksperimen ini</p>
+<p><b>Ingat!</b> Anda tidak dapat menggunakan fitur <b>back page atau kembali ke halaman sebelumnya dalam eksperimen ini</b>.</p>
+<p>Maka dari itu, mohon pastikan Anda membaca dan memahami dengan seksama seluruh instruksi yang ada pada setiap halaman sebelum melanjutkan ke halaman berikutnya sehingga Anda dapat memahami apa yang harus Anda lakukan di dalam eksperimen ini</p>
 
 <p>Eksperimen ini memberikan Anda kesempatan untuk memperoleh uang tunai yang akan dibayarkan setelah Anda menyelesaikan rangkaian eksperimen ini. Besaran uang yang akan Anda peroleh bergantung pada apa yang Anda lakukan di dalam eksperimen ini. Oleh karenanya, mohon untuk serius dalam menyelesaikannya sesuai dengan keputusan Anda.</p>
 
-<p>Untuk peserta yang menyelesaikan semua bagian penelitian ini akan minimal mendapatkan pembayaran berupa participant fee sebesar Rp15.000 serta tambahan kurang lebih Rp20.000 s.d Rp100.000 tergantung dari kesempatan yang ada dan keputusan yang Anda lakukan.</p>
+<p>Untuk peserta yang menyelesaikan semua bagian penelitian ini akan minimal mendapatkan pembayaran berupa participant fee sebesar Rp15.000 serta tambahan sampai dengan Rp100.000 yang akan disalurkan melalui uang elektronik tergantung dari kesempatan yang ada dan keputusan yang Anda lakukan.</p>
 <p><h5><b>1. Eksperimen</b></h5></p>
 <p>Eksperimen ini meminta Anda untuk melakukan pengambilan keputusan dalam melaporkan pajak penghasilan Anda. Penelitian ini terdiri dari tiga bagian yaitu pengantar, game, dan kuesioner singkat.</p>
 <p>Beberapa hal yang perlu Anda pahami dalam eksperimen ini yaitu:</p>
@@ -60,13 +64,13 @@ table.pre, td.pre, th.pre {
     <li>Anda melakukan real effort game yaitu game huruf random yang digunakan untuk mendapatkan omset/pendapatan yang akan digunakan untuk pelaporan </li>
     <li>Melaporkan pajak dalam form yang tersedia</li>
 </ol>
-<p>Anda akan bermain dalam 3 periode latihan dan ditambah 10 periode game inti.</p>
+<p>Anda akan bermain dalam 3 periode latihan dan ditambah 15 periode game inti.</p>
 <p><h5><b>c. Latihan</b></h5></p>
-<p>Untuk lebih memahami penelitian ini maka Anda akan melakukan 3 periode game sebelum masuk ke game inti sebanyak 10 periode sehingga total periode adalah 13 periode.</p>
+<p>Untuk lebih memahami penelitian ini maka Anda akan melakukan 3 periode game sebelum masuk ke game inti sebanyak 15 periode sehingga total periode adalah 18 periode.</p>
 <p><h5><b>d. Durasi Eksperimen</b></h5></p>
-<p>Estimasi untuk menyelesaikan rangkaian eksperimen ini adalah selama kurang lebih 60 menit. Namun hal ini tergantung dari bagaimana Anda memahami instruksi dan waktu yang Anda butuhkan untuk memutuskan alokasi Anda. Kami harap Anda menyelesaikan eksperimen ini secara mandiri karena akan menentukan pembayaran yang Anda peroleh! Anda dapat menghubungi kami melalui WhatsApp di <a href="http://wa.me/628569041762" target="_blank">http://wa.me/628569041762</a> jika ada hal-hal yang perlu Anda tanyakan.</p>
+<p>Estimasi untuk menyelesaikan rangkaian eksperimen ini adalah kurang lebih 45 menit hingga 60 menit. Namun hal ini tergantung dari bagaimana Anda memahami instruksi dan waktu yang Anda butuhkan untuk memutuskan alokasi Anda. Kami harap Anda menyelesaikan eksperimen ini secara mandiri karena akan menentukan pembayaran yang Anda peroleh! Anda dapat menghubungi kami melalui WhatsApp di <a href="http://wa.me/628569041762" target="_blank">http://wa.me/628569041762</a> jika ada hal-hal yang perlu Anda tanyakan.</p>
 <p><h5><b>e. Penghitungan Pembayaran</b></h5></p>
-<p>Dalam game ini Anda akan mendapatkan penghasilan atau pendapatan yang diukur dalam satuan EU (Eksperimen Unit) dimana 1.000 EU dapat dikonversikan menjadi 1 (satu) rupiah. Misal Anda mendapatkan 50.000.000 EU maka dapat dikonversikan menjadi Rp50.000,-</p>
+<p>Dalam game ini Anda akan mendapatkan penghasilan atau pendapatan yang diukur dalam satuan EU (Eksperimen Unit) dimana 1.000 EU dapat dikonversikan menjadi 1 (satu) rupiah. Misal Anda mendapatkan 50.000.000 EU maka dapat dikonversikan menjadi Rp50.000,-. Untuk memudahkan pembayaran maka konversi menjadi rupiah akan dibulatkan dalam angka rupiah penuh.</p>
 
 <br>
 <p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>

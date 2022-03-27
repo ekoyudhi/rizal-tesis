@@ -1,7 +1,8 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,6 +29,7 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Tanda Terima Pelaporan Pajak
 {% endblock %}
 

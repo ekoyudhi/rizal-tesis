@@ -1,7 +1,12 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 
+{% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
+{% endblock %}
+
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Pencairan Pembayaran
 {% endblock %}
 

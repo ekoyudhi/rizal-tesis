@@ -2,6 +2,7 @@
 {% load otree static%}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,15 +29,25 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Instruksi Eksperimen (lanjutan)
 {% endblock %}
 
 {% block content %}
 <br>
 <br>
-<p>Instruksi eksperimen dalam bentuk pdf dapat Anda unduh di link berikut: <a href="{% static instruksi %}" target="_blank">Download File</a></p>
+<p>Instruksi eksperimen dalam bentuk pdf dapat Anda unduh di link berikut:<br>
+<a id="btn_download" class="btn btn-primary" target="_blank" href="{% static instruksi %}">Download Instruksi</a>
 <br><br>
-<p>Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
-<button class="otree-btn-next btn btn-primary">Lanjut</button>
+<p id="ket_lanjut" hidden="true">Tekan tombol 'Lanjut' jika Anda sudah memahami instruksi di atas.</p>
+<button id="btn_lanjut" hidden="true" class="otree-btn-next btn btn-primary">Lanjut</button>
+
+<script lang="text/javascript">
+  $("#btn_download").click(function() {
+    $("#ket_lanjut").removeAttr("hidden");
+    $("#btn_lanjut").removeAttr("hidden");
+  });
+
+</script>
 
 {% endblock %}

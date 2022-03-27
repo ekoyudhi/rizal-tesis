@@ -2,6 +2,7 @@
 {% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.pre, td.pre, th.pre {
     border: 1px solid black;
@@ -28,6 +29,7 @@ table.pre, td.pre, th.pre {
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Instruksi Eksperimen (lanjutan)
 {% endblock %}
 
@@ -50,21 +52,23 @@ table.pre, td.pre, th.pre {
 <p>Biaya= 30% x 72.000.000 EU = 21.600.000 EU</p>
 <p>Laba = 72.000.000 EU – 21.600.000 EU = 50.400.000 EU</p>
 <br>
-<p>Beberapa alternatif pelaporan, misalnya:</p>
+<p>Beberapa alternatif pelaporan yang mungkin terjadi, misalnya:</p>
 <table class="table table-bordered" style="border: 1px solid black;">
   <tr><td><b>Alternatif 1</b></td><td>
-    Anda melaporkan omset sebesar 50.000.000 EU maka penghitungan untuk Anda:<br>
-    Omset yang dilaporkan= 50.000.000 EU<br>
-    Pajak terutang= 10% x 50.000.000 EU = 5.000.000<br><br>
+    Anda melaporkan omset sebesar 25.000.000 EU (lebih rendah dari omset game huruf random) maka penghitungan untuk Anda:<br><br>
+
+    Omset yang dilaporkan= 25.000.000 EU<br>
+    Pajak terutang= 10% x 25.000.000 EU = 2.500.000<br><br>
 
     Maka pembayaran/uang yang mungkin bisa Anda dapatkan adalah:<br>
-    Laba – Pajak = 50.400.000 – 5.000.000 = 45.400.000 EU<br>
+    Laba – Pajak = 50.400.000 – 2.500.000 = 47.900.000 EU<br>
   </td></tr>
 </table>
 <br>
 <table class="table table-bordered" style="border: 1px solid black;">
   <tr><td><b>Alternatif 2</b></td><td>
-    Anda melaporkan omset sebesar 72.000.000 EU maka penghitungan untuk Anda:<br>
+    Anda melaporkan omset sebesar 50.000.000 EU (lebih rendah dari omset game huruf random) maka penghitungan untuk Anda:<br><br>
+
     Omset yang dilaporkan= 72.000.000 EU<br>
     Pajak terutang= 10% x 72.000.000 EU = 7.200.000 EU<br><br>
 
@@ -75,7 +79,20 @@ table.pre, td.pre, th.pre {
 <br>
 <table class="table table-bordered" style="border: 1px solid black;">
   <tr><td><b>Altenatif 3</b></td><td>
-    Anda melaporkan omset sebesar 90.000.000 EU maka penghitungan untuk Anda:<br>
+    Anda melaporkan omset sebesar 72.000.000 EU (sama dengan omset game huruf random) maka penghitungan untuk Anda:<br><br>
+
+    Omset yang dilaporkan= 72.000.000 EU<br>
+    Pajak terutang= 10% x 72.000.000 EU = 7.200.000 EU<br><br>
+
+    Maka pembayaran/uang yang mungkin bisa Anda dapatkan adalah = <br>
+    Laba – Pajak = 50.400.000 – 7.200.000 = 43.200.000 EU<br>
+  </td></tr>
+</table>
+<br>
+<table class="table table-bordered" style="border: 1px solid black;">
+  <tr><td><b>Altenatif 4</b></td><td>
+    Anda melaporkan omset sebesar 90.000.000 EU (lebih tinggi dari omset game huruf random)  maka penghitungan untuk Anda:<br><br>
+
     Omset yang dilaporkan= 90.000.000 EU<br>
     Pajak terutang= 10% x 90.000.000 EU = 9.000.000 EU<br><br>
 

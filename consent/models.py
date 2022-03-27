@@ -20,6 +20,8 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
+    header = "Kontak Peneliti (Rizal) <a href='http://wa.me/628569041762' target='_blank'>http://wa.me/628569041762</a>"
+
 
 class Subsession(BaseSubsession):
     pass
@@ -30,5 +32,5 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    email = models.StringField(blank=False)
+    #email = models.StringField(blank=False)
     consent = models.BooleanField(choices=[[True, 'Ya'], [False, 'Tidak']])

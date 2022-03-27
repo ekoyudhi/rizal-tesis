@@ -7,7 +7,31 @@ class Awal(Page):
     def before_next_page(self):
         if self.round_number == 1:
             self.participant.vars['periode'] = Constants.num_rounds
-            r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
+            b1= [1,2,3]
+            b2= [4,5,6]
+            b3= [7,8,9]
+            b4= [10,11,12]
+            b5= [13,14,15]
+            lst_r = [b1,b2,b3,b4,b5]
+            x = random.randint(Constants.num_audit,Constants.num_audit_max)
+            r_list = []
+            if x <= len(lst_r):
+                r_l = random.sample(range(1,6),x)
+                for i in r_l:
+                    r_list.append(lst_r[i-1][random.randint(0,2)])
+            else:
+                r_l = random.sample(range(1,6),5)
+                for i in r_l:
+                    r_list.append(lst_r[i-1][random.randint(0,2)])
+                loop = True
+                while(loop):
+                    s = random.randint(1,15)
+                    if s not in r_list:
+                        r_list.append(s)
+                        if len(r_list) == x:
+                            loop = False
+
+            #r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
             r_list.sort()
             self.participant.vars['audit'] = r_list
             idx = 1

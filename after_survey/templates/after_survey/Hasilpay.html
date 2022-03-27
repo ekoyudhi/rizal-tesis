@@ -1,6 +1,7 @@
 {% extends "global/Page.html" %}
 {% load otree static %}
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 .payoff {
     font-size: 1.6vw;
@@ -8,21 +9,23 @@
 </style>
 {% endblock %}
 {% block title %}
-    Hasil Payoff
+<header><p>{{Constants.header}}</p></header>
+    Hasil Pembayaran (Payoff)
 {% endblock %}
 
 {% block content %}
-<p>Random payment Anda adalah periode {{player.periode_terpilih}}, dengan total payoff sebesar <b>Rp <span class="payoff" id="payoff_real1"></span> + Rp <span class="payoff">15,000</span> = Rp <span class="payoff" id="payoff_real"></span></b></p>
+<p>Random payment Anda adalah periode {{player.periode_terpilih}}, dengan total pembayaran (payoff) sebesar <b>Rp <span class="payoff" id="payoff_real1"></span> + Rp <span class="payoff">15,000</span> = Rp <span class="payoff" id="payoff_real"></span></b></p>
 
-<p>Yang selanjutnya akan ditransfer ke nomor <span class="payoff" id="metode"></span> : <span class="payoff" id="no_hp">{{player.s17}}</span></p>
+<p>Yang selanjutnya akan ditransfer ke nomor <span class="payoff" id="metode"></span> : <span class="payoff" id="no_hp">{{player.t17}}</span></p>
 <p>Dana akan ditransfer maksimal 3x24 jam</p>
 
 <p>Terima kasih atas partisipasi Anda</p>
 
 <p>Silahkan screenshot tampilan ini</p>
-<p>Kendala :  http://wa.me/628569041762</p>
-
-<h4>Selesai</h4>
+<p>Kendala :  <a href="http://wa.me/628569041762" target="_blank">http://wa.me/628569041762</a></p>
+<br><br>
+<p>Penelitiaan sudah selesai. Silahkan Anda dapat menutup halaman ini.</p>
+<p>Terima kasih.</p>
 <script>
     function thousands_separators(num)
     {
@@ -38,7 +41,7 @@
         document.getElementById("payoff_real1").textContent = thousands_separators(0)
         document.getElementById("payoff_real").textContent = thousands_separators(15000)
     }
-    var mtd = {{player.s18}}
+    var mtd = {{player.t18}}
     var metode = ""
     if (mtd == 1) {
         metode = "OVO";

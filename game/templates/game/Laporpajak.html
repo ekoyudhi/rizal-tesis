@@ -1,6 +1,7 @@
 {% extends "global/Page.html" %}
-{% load otree %}
+{% load otree static %}
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 table.lap, td.lap, th.lap {
     border: 1px solid black;
@@ -28,6 +29,7 @@ table.lap, td.lap, th.lap {
 </style>
 {% endblock %}
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
 Pelaporan Pajak Penghasilan
 {% endblock %}
 
@@ -46,14 +48,14 @@ Pelaporan Pajak Penghasilan
     <h5>Pelaporan Pajak Penghasilan</h5>
     <br>
     <input type="hidden" id="omset_input" name="omset_input" />
-    Omset&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <input type="text" id="txt_omset_input" name="txt_omset_input" /> EU<br><br>
-    Jumlah pajak terutang &nbsp;&nbsp;&nbsp;: <input type="text" id="pph" name="pph" disabled /> EU
+    Omset&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;: <input type="text" style="text-align: right;" id="txt_omset_input" name="txt_omset_input" /> EU<br><br>
+    Jumlah pajak terutang &nbsp;&nbsp;&nbsp;: <input type="text" style="text-align: right;" id="pph" name="pph" disabled /> EU
     <br>
     </td></tr>
 </table>
 <br>
 <input type="hidden" id="payoff_awal" name="payoff_awal" />
-<p>Jumlah pendapatan bersih/pembayaran yang mungkin bisa Anda dapatkan pada periode ini : <input type="text" id="txt_payoff_awal" name="txt_payoff_awal" disabled /> EU</p>
+<p>Jumlah pendapatan bersih/pembayaran yang mungkin bisa Anda dapatkan pada periode ini : <input type="text" style="text-align: right;" id="txt_payoff_awal" name="txt_payoff_awal" disabled /> EU</p>
 <br>
 <p>Pastikan kembali bahwa pengisian pelaporan pajak benar-benar sesuai dengan keputusan Anda. </p>
 <br>
@@ -93,6 +95,8 @@ Pelaporan Pajak Penghasilan
           document.getElementById("omset_input").value = omset_input
         }
         document.getElementById("txt_payoff_awal").value = thousands_separators(payoff)
+        setCookie("omset_input", omset_input, 2)
+        console.log(getCookie("omset_input"))
     }
 
     function prevFunction() {
@@ -105,7 +109,28 @@ Pelaporan Pajak Penghasilan
         num_parts[0] = num_parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
         return num_parts.join(".");
     }
+    function setCookie(cname,cvalue,exdays) {
+      const d = new Date();
+      d.setTime(d.getTime() + (exdays*24*60*60*1000));
+      let expires = "expires=" + d.toUTCString();
+      document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/;SameSite=None; Secure";
+    }
 
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
     $("#txt_omset_input").keyup(function(event){
         //var oms = str(document.getElementById("omset_input").value).replace(",","")
         // When user select text in the document, also abort.
@@ -129,8 +154,21 @@ Pelaporan Pajak Penghasilan
     });
 
     //document.getElementById("prefill_persen").value =
-    document.getElementById("txt_omset_input").value = {{prefilled_omset}};
+    if (getCookie("omset_input") == "") {
+      document.getElementById("txt_omset_input").value = {{prefilled_omset}};
+    }
+    else {
+      document.getElementById("txt_omset_input").value = getCookie("omset_input");
+    }
     $("#txt_omset_input").keyup();
+    $("#txt_omset_input").focus();
+
+    setCookie("total_omset", "", -100)
+    setCookie("total_biaya", "", -100)
+    setCookie("view_omset", "", -100)
+    setCookie("view_biaya", "", -100)
+    setCookie("view_laba", "", -100)
+    setCookie("performance", "", -100)
 
 </script>
 {% endblock %}

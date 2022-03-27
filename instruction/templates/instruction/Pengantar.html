@@ -1,10 +1,12 @@
 {% extends "global/Page.html" %}
-{% load staticfiles otree %}
+{% load otree static %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 {% endblock %}
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Pengantar
 {% endblock %}
 
@@ -21,10 +23,10 @@
         </ul>
     </p>
     <p>
-        Untuk saat ini, Anda sebagai warga negara Nusa Makmur akan membayar dan melaporkan pajak dalam <b>10 periode</b>.
+        Untuk saat ini, Anda sebagai warga negara Nusa Makmur akan membayar dan melaporkan pajak dalam <b>15 periode</b>.
     </p>
     <p>
-        Sebagai bentuk <b>pengawasan atas pembayaran pajak</b> maka otoritas pajak Nusa Makmur diwajibkan melaksanakan pemeriksaan terhadap <b>30% dari total pelaporan</b>, yaitu <b>3 dari 10 periode pelaporan pajak</b> akan diperiksa di akhir periode pembayaran dan pelaporan pajak.
+        Sebagai bentuk <b>pengawasan atas pembayaran pajak</b> maka otoritas pajak Nusa Makmur diwajibkan melaksanakan pemeriksaan terhadap <b>20% s.d. 40% dari total pelaporan</b>, yaitu <b>3 atau 4 atau 5 atau 6 dari 15 periode pelaporan pajak</b> akan diperiksa di akhir periode pembayaran dan pelaporan pajak.
     </p>
 	<p>Atas pemeriksaan yang dilakukan, jika terdapat <b>ketidakpatuhan pembayaran pajak</b> atau dalam hal ini <b>>omset yang dilaporkan tidak sesuai dengan omset yang sebenarnya</b> maka otoritas pajak Nusa Makmur akan menetapkan denda sebesar <b>200% dari selisih pajak yang kurang dibayar</b>.
     </p>

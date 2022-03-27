@@ -20,6 +20,7 @@ class Constants(BaseConstants):
     players_per_group = None
     num_rounds = 1
 
+    header = "Kontak Peneliti (Rizal) <a href='http://wa.me/628569041762' target='_blank'>http://wa.me/628569041762</a>"
 
 class Subsession(BaseSubsession):
     pass
@@ -40,15 +41,16 @@ class Player(BasePlayer):
     s8 = models.IntegerField(choices=[[1,"Tidak Mudah"],[2,"Cukup Mudah"],[3,"Mudah"],[4,"Sangat Mudah"]], label="8) Seberapa mudahkah penghitungan pajak dalam penelitian ini?")
     s9 = models.IntegerField(choices=[[1,"Tidak Setuju"],[2,"Cukup Setuju"],[3,"Setuju"],[4,"Sangat Setuju"]], label="9) Seberapa setuju Anda dengan penurunan tarif dari 20% ke 10% di negara Nusa Makmur?")
     s10 = models.IntegerField(choices=[[1,"Tidak Percaya"],[2,"Cukup Percaya"],[3,"Percaya"],[4,"Sangat Percaya"]], label="10) Seberapa besar kepercayaan Anda terhadap otoritas pajak Nusa Makmur terkait dengan perhitungan estimasi prefilled omset yang diterapkan dalam form pelaporan pajak?", blank=True)
+    s11 = models.IntegerField(choices=[[1,"Tidak Perlu"],[2,"Cukup Perlu"],[3,"Perlu"],[4,"Sangat Perlu"]], label="11) Seberapa perlukah penerapan prefilled omset dalam form pelaporan pajak?", blank=True)
 
-    s11 = models.IntegerField(label="1) Umur")
-    s12 = models.IntegerField(choices=[[1,'Laki-laki'],[2,'Perempuan']], label='2) Jenis Kelamin')
-    s13 = models.IntegerField(choices=[[1,'Diploma 3 (D3)'],[2,'Sarjana (S1/D4)'],[3,'Magister (S2)'],[4,'Doktoral (S3)']], label='3) Tingkat pendidikan yang sedang berlangsung')
-    s14 = models.StringField(label="4) Fakultas")
-    s15 = models.StringField(label="5) Program Studi")
-    s16 = models.IntegerField(choices=[[1,'Di bawah 1 juta'],[2,'1 juta s.d 2,5 juta'],[3,'2,5 jt s.d 5 jt'],[4,'di atas 5 jt']], label='6) Range Biaya Hidup/Uang Saku per bulan')
-    s17 = models.StringField(label="7) Nomor HP OVO/GOPAY")
-    s18 = models.IntegerField(choices=[[1,'OVO'],[2,'Gopay']], label='8) Metode penerimaan yang diinginkan:')
+    t11 = models.IntegerField(label="1) Umur")
+    t12 = models.IntegerField(choices=[[1,'Laki-laki'],[2,'Perempuan']], label='2) Jenis Kelamin')
+    t13 = models.IntegerField(choices=[[1,'Diploma 3 (D3)'],[2,'Sarjana (S1/D4)'],[3,'Magister (S2)'],[4,'Doktoral (S3)']], label='3) Tingkat pendidikan yang sedang berlangsung')
+    t14 = models.StringField(label="4) Fakultas")
+    t15 = models.StringField(label="5) Program Studi")
+    t16 = models.IntegerField(choices=[[1,'Di bawah 1 juta'],[2,'1 juta s.d 2,5 juta'],[3,'2,5 jt s.d 5 jt'],[4,'di atas 5 jt']], label='6) Range Biaya Hidup/Uang Saku per bulan')
+    t17 = models.StringField(label="7) Nomor HP OVO/GOPAY")
+    t18 = models.IntegerField(choices=[[1,'OVO'],[2,'Gopay']], label='8) Metode penerimaan yang diinginkan:')
     
     angka_random = models.IntegerField(min=11, max=99, label="2 digit angka")
     periode_terpilih = models.IntegerField(initial=0, blank=False)

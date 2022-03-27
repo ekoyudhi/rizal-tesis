@@ -2,6 +2,7 @@
 {% load staticfiles otree %}
 
 {% block styles %}
+<link rel="stylesheet" href="{% static 'global/custom.css' %}" />
 <style type="text/css">
 
 ._otree-content{
@@ -137,6 +138,7 @@ td {
 
 
 {% block title %}
+<header><p>{{Constants.header}}</p></header>
     Game - Periode latihan ke-{{round}}
 {% endblock %}
 
@@ -150,13 +152,13 @@ td {
 <input type="hidden" name="total_biaya" id="total_biaya">
 <table class="table-ku">
   <tr>
-    <td>Omset</td><td>:</td><td><input type="text" name="view_omset" id="view_omset" disabled /> EU</td>
+    <td>Omset</td><td>:</td><td><input type="text" style="text-align: right;" name="view_omset" id="view_omset" disabled /> EU</td>
   </tr>
   <tr>
-    <td>Biaya</td><td>:</td><td><input type="text" name="view_biaya" id="view_biaya" disabled /> EU</td>
+    <td>Biaya</td><td>:</td><td><input type="text" style="text-align: right;" name="view_biaya" id="view_biaya" disabled /> EU</td>
   </tr>
   <tr>
-    <td>Laba</td><td>:</td><td><input type="text" name="view_laba" id="view_laba" disabled /> EU</td>
+    <td>Laba</td><td>:</td><td><input type="text" style="text-align: right;" name="view_laba" id="view_laba" disabled /> EU</td>
   </tr>
 </table>
 <br>
@@ -223,11 +225,55 @@ td {
   }
   //document.getElementById("mistakes").value = 0;
   //document.getElementById("performance").value = 0;
-  document.getElementById("total_omset").value = 0; //Number(document.getElementById("base_omset").value)
-  document.getElementById("total_biaya").value = 0; //Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value)
-  document.getElementById("view_omset").value = 0; //thousands_separators(Number(document.getElementById("base_omset").value))
-  document.getElementById("view_biaya").value = 0; //thousands_separators(Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value))
-  document.getElementById("view_laba").value = 0
+  if (getCookie("total_omset") == "" || getCookie("total_omset") == 0) {
+    document.getElementById("total_omset").value = 0; //Number(document.getElementById("base_omset").value)
+    setCookie("total_omset", 0, 2)
+  }
+  else {
+    document.getElementById("total_omset").value = getCookie("total_omset");
+  }
+
+  if (getCookie("total_biaya") == "" || getCookie("total_biaya") == 0) {
+    document.getElementById("total_biaya").value = 0; //Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value)
+    setCookie("total_biaya", 0, 2)
+  }
+  else {
+    document.getElementById("total_biaya").value = getCookie("total_biaya");
+  }
+
+  if (getCookie("view_omset") == "" || getCookie("view_omset") == 0) {
+    document.getElementById("view_omset").value = 0; //thousands_separators(Number(document.getElementById("base_omset").value))
+    setCookie("view_omset", 0, 2)
+  }
+  else {
+    document.getElementById("view_omset").value = getCookie("view_omset");
+  }
+  
+  if (getCookie("view_biaya") == "" || getCookie("view_biaya") == 0) {
+    document.getElementById("view_biaya").value = 0; //thousands_separators(Number(document.getElementById("base_biaya").value) / 100 * Number(document.getElementById("base_omset").value))
+    setCookie("view_biaya", 0, 2)
+  }
+  else {
+    document.getElementById("view_biaya").value = getCookie("view_biaya");
+  }
+  
+  if (getCookie("view_laba") == "" || getCookie("view_laba") == 0) {
+    document.getElementById("view_laba").value = 0
+    setCookie("view_laba", 0, 2)
+  }
+  else {
+    document.getElementById("view_laba").value = getCookie("view_laba");
+  }
+
+  if (getCookie("performance") == "" || getCookie("performance") == 0) {
+    document.getElementById("performance").value = 0
+    setCookie("performance", 0, 2)
+  }
+  else {
+    document.getElementById("performance").value = getCookie("performance");
+  }
+  
+  setCookie("omset_input", "", -100);
 
   $('#task_code_0').focus();
 
@@ -263,6 +309,12 @@ function myFunction() {
       document.getElementById("view_omset").value = thousands_separators(temp_omset);
       document.getElementById("view_biaya").value = thousands_separators(temp_biaya);
       document.getElementById("view_laba").value = thousands_separators(temp_omset - temp_biaya)
+      setCookie("total_omset", temp_omset, 2)
+      setCookie("total_biaya", temp_biaya, 2)
+      setCookie("view_omset", thousands_separators(temp_omset), 2)
+      setCookie("view_biaya", thousands_separators(temp_biaya), 2)
+      setCookie("view_laba", thousands_separators(temp_omset - temp_biaya), 2)
+      setCookie("performance", temp, 2)
       
       dict=genNewDict();
       shuffle(legend_letters)
@@ -393,6 +445,28 @@ $("#task_code_0").keyup(function(event){
         });
     });
 
+function setCookie(cname,cvalue,exdays) {
+  const d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  let expires = "expires=" + d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+
+function getCookie(cname) {
+  let name = cname + "=";
+  let decodedCookie = decodeURIComponent(document.cookie);
+  let ca = decodedCookie.split(';');
+  for(let i = 0; i < ca.length; i++) {
+    let c = ca[i];
+    while (c.charAt(0) == ' ') {
+      c = c.substring(1);
+    }
+    if (c.indexOf(name) == 0) {
+      return c.substring(name.length, c.length);
+    }
+  }
+  return "";
+}
 </script>
 
 {% endblock %}
