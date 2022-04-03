@@ -95,8 +95,8 @@ Pelaporan Pajak Penghasilan
           document.getElementById("omset_input").value = omset_input
         }
         document.getElementById("txt_payoff_awal").value = thousands_separators(payoff)
-        setCookie("omset_input", omset_input, 2)
-        console.log(getCookie("omset_input"))
+        //setCookie("omset_input", omset_input, 2)
+        //console.log(getCookie("omset_input"))
     }
 
     function prevFunction() {
@@ -154,12 +154,12 @@ Pelaporan Pajak Penghasilan
     });
 
     //document.getElementById("prefill_persen").value =
-    if (getCookie("omset_input") == "") {
+    //if (getCookie("omset_input") == "") {
       document.getElementById("txt_omset_input").value = {{prefilled_omset}};
-    }
-    else {
-      document.getElementById("txt_omset_input").value = getCookie("omset_input");
-    }
+    //}
+    //else {
+    //  document.getElementById("txt_omset_input").value = getCookie("omset_input");
+    //}
     $("#txt_omset_input").keyup();
     $("#txt_omset_input").focus();
 

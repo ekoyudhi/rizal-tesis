@@ -77,8 +77,8 @@ table.lap, td.lap, th.lap {
         } else {
           document.getElementById("omset_input").value = omset_input
         }
-        setCookie("omset_input", omset_input, 2)
-        console.log(getCookie("omset_input"))
+        //setCookie("omset_input", omset_input, 2)
+        //console.log(getCookie("omset_input"))
     }
 
     function myFunction() {
@@ -154,7 +154,7 @@ table.lap, td.lap, th.lap {
     }, 1000);
 
 
-    document.getElementById("txt_omset_input").value = getCookie("omset_input");
+    document.getElementById("txt_omset_input").value = 0
 
     $("#txt_omset_input").keyup();
     $("#txt_omset_input").focus();
