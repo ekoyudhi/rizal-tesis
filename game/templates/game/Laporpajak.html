@@ -60,7 +60,31 @@ Pelaporan Pajak Penghasilan
 <p>Pastikan kembali bahwa pengisian pelaporan pajak benar-benar sesuai dengan keputusan Anda. </p>
 <br>
 <p>Tekan tombol 'Lanjut' jika Anda sudah yakin dengan isian pelaporan Anda</p>
-<button id="btn_lanjut" disabled="disabled" class="otree-btn-next btn btn-primary">Lanjut</button>
+
+<!-- Button trigger modal -->
+<button id="btn_lanjut" disabled="disabled" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+  Lanjut
+</button>
+<button id="btn_ok" class="otree-btn-next btn btn-primary invisible"></button>
+<!-- Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">Peringatan!!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Apakah Anda sudah yakin dengan pelaporan pajak Anda?<br>
+        Setelah memilih "Ya" maka Anda tidak dapat melakukan perubahan data.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
+        <button id="btn_ya" type="button" class="otree-btn-next btn btn-success">Ya</button>
+      </div>
+    </div>
+  </div>
+</div>
 <script>
     var s = {{wait_seconds}};
 
@@ -153,6 +177,10 @@ Pelaporan Pajak Penghasilan
         hitungFunction();
     });
 
+    $("#btn_ya").click(function() {
+      $("#btn_ok").click();
+    });
+    
     //document.getElementById("prefill_persen").value =
     //if (getCookie("omset_input") == "") {
       document.getElementById("txt_omset_input").value = {{prefilled_omset}};
