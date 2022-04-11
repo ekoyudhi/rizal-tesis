@@ -55,6 +55,7 @@ class Instruksi6(Page):
             'image_9': 'images/image_9.jpg',
             'image_10': 'images/image_10.jpg',
             'image_11': 'images/image_11.jpg',
+            'image_11_2': 'images/image_11_2.jpg',
             'image_12': 'images/image_12.jpg',
             'image_13': 'images/image_13.jpg',
         }
