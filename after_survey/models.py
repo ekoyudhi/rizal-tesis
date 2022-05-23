@@ -51,6 +51,7 @@ class Player(BasePlayer):
     t16 = models.IntegerField(choices=[[1,'Di bawah 1 juta'],[2,'1 juta s.d 2,5 juta'],[3,'2,5 jt s.d 5 jt'],[4,'di atas 5 jt']], label='6) Range Biaya Hidup/Uang Saku per bulan')
     t17 = models.StringField(label="7) Nomor HP OVO/GOPAY")
     t18 = models.IntegerField(choices=[[1,'OVO'],[2,'Gopay']], label='8) Metode penerimaan yang diinginkan:')
+    t19 = models.IntegerField(choices=[[1,"Tidak Menarik"],[2,"Cukup Menarik"],[3,"Menarik"],[4,"Sangat Menarik"]], label="9) Seberapa menariknya eksperimen ini bagi Anda?")
     
     angka_random = models.IntegerField(min=11, max=99, label="2 digit angka")
     periode_terpilih = models.IntegerField(initial=0, blank=False)

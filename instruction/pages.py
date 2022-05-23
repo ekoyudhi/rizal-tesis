@@ -100,7 +100,7 @@ class Pilihwaktu(Page):
         waktu = self.player.waktu
         self.participant.vars['waktu'] = waktu
         if waktu == 30:
-            self.participant.vars['base_omset'] = 8000000
+            self.participant.vars['base_omset'] = 7500000
             self.participant.vars['base_biaya'] = 30
         elif waktu == 45:
             self.participant.vars['base_omset'] = 6500000
