@@ -165,6 +165,14 @@ table.lap, td.lap, th.lap {
         hitungFunction();
     });
 
+    $('#task_code_0').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+        //alert('You pressed a "enter" key in textbox');
+        $("#btn_lanjut").click();
+      }
+    });
+
     var s = {{wait_seconds}};
 
     // Update the count down every 1 second

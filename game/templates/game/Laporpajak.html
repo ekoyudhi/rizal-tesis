@@ -177,6 +177,14 @@ Pelaporan Pajak Penghasilan
         hitungFunction();
     });
 
+    $('#task_code_0').keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+        //alert('You pressed a "enter" key in textbox');
+        $("#btn_lanjut").click();
+      }
+    });
+
     $("#btn_ya").click(function() {
       $("#btn_ok").click();
     });
