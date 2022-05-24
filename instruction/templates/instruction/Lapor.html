@@ -139,10 +139,6 @@ table.lap, td.lap, th.lap {
       return "";
     }
 
-    $("#btn_ya").click(function() {
-      $("#btn_ok").click();
-    });
-
     $("#txt_omset_input").keyup(function(event){
         //var oms = str(document.getElementById("omset_input").value).replace(",","")
         // When user select text in the document, also abort.
@@ -151,7 +147,7 @@ table.lap, td.lap, th.lap {
             return; 
         }       
         // When the arrow keys are pressed, abort.
-        if ($.inArray(event.keyCode, [38, 40, 37, 39, 13]) !== -1) {
+        if ($.inArray(event.keyCode, [38, 40, 37, 39]) !== -1) {
             return; 
         }       
         var $this = $(this);            
@@ -165,13 +161,18 @@ table.lap, td.lap, th.lap {
         hitungFunction();
     });
 
-    $('#task_code_0').keypress(function(event){
+    $('#txt_omset_input').keypress(function(event){
       var keycode = (event.keyCode ? event.keyCode : event.which);
       if(keycode == '13'){
-        alert('You pressed a "enter" key in textbox');
+        event.preventDefault();
+        return false;
       }
     });
 
+    $("#btn_ya").click(function() {
+      $("#btn_ok").click();
+    });
+    
     var s = {{wait_seconds}};
 
     // Update the count down every 1 second
