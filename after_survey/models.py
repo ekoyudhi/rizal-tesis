@@ -48,11 +48,13 @@ class Player(BasePlayer):
     t13 = models.IntegerField(choices=[[1,'Diploma 3 (D3)'],[2,'Sarjana (S1/D4)'],[3,'Magister (S2)'],[4,'Doktoral (S3)']], label='3) Tingkat pendidikan yang sedang berlangsung')
     t14 = models.StringField(label="4) Fakultas")
     t15 = models.StringField(label="5) Program Studi")
-    t16 = models.IntegerField(choices=[[1,'Di bawah 1 juta'],[2,'1 juta s.d 2,5 juta'],[3,'2,5 jt s.d 5 jt'],[4,'di atas 5 jt']], label='6) Range Biaya Hidup/Uang Saku per bulan')
+    t16 = models.IntegerField(choices=[[1,'Di bawah 500 ribu'],[2,'500 ribu s.d 1 juta'],[3,'1 jt s.d 1,5 jt'],[4,'1,5 jt s.d 2 jt'],[5,'2 jt s.d 2,5 jt'],[6,'di atas 2,5 jt']], label='6)	Rata-rata pengeluaran setiap bulan')
     t17 = models.StringField(label="7) Nomor HP OVO/GOPAY")
-    t18 = models.IntegerField(choices=[[1,'OVO'],[2,'Gopay']], label='8) Metode penerimaan yang diinginkan:')
-    t19 = models.IntegerField(choices=[[1,"Tidak Menarik"],[2,"Cukup Menarik"],[3,"Menarik"],[4,"Sangat Menarik"]], label="9) Seberapa menariknya eksperimen ini bagi Anda?")
+    t18 = models.StringField(label="8)	Alamat email alternatif")
+    t19 = models.IntegerField(choices=[[1,'OVO'],[2,'Gopay']], label='9) Metode penerimaan yang diinginkan:')
+    t20 = models.IntegerField(choices=[[1,"Tidak Menarik"],[2,"Cukup Menarik"],[3,"Menarik"],[4,"Sangat Menarik"]], label="10) Seberapa menariknya eksperimen ini bagi Anda?")
     
+
     angka_random = models.IntegerField(min=11, max=99, label="2 digit angka")
     periode_terpilih = models.IntegerField(initial=0, blank=False)
     payoff_real = models.FloatField(initial=0, blank=False)

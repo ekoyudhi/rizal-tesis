@@ -67,7 +67,8 @@ class Notif(Page):
     
     def vars_for_template(self):
         wait_seconds = self.session.config['wait_seconds']
-        return {'wait_seconds': wait_seconds}
+        return {'wait_seconds': wait_seconds,
+                'image_14_prefilled': 'images/image_14_prefilled.jpg'}
 
 class Ambilwaktu(Page):
     form_model = 'player'

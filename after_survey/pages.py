@@ -21,7 +21,7 @@ class Survey(Page):
 
 class Survey2(Page):
     form_model = 'player'
-    form_fields = ['t11','t12','t13','t14','t15','t16','t17','t18','t19']
+    form_fields = ['t11','t12','t13','t14','t15','t16','t17','t18','t19','t20']
 
 class Ambilpay(Page):
     form_model = 'player'
