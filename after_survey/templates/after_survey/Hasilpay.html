@@ -36,13 +36,13 @@
     }
 
     if ({{player.payoff_real}}-15000 > 0) {
-        document.getElementById("payoff_real1").textContent = thousands_separators({{player.payoff_real}}-15000)
-        document.getElementById("payoff_real").textContent = thousands_separators({{player.payoff_real}})
+        document.getElementById("payoff_real1").textContent = thousands_separators({{player.payoff_real}}-15000);
+        document.getElementById("payoff_real").textContent = thousands_separators({{player.payoff_real}});
     } else {
-        document.getElementById("payoff_real1").textContent = thousands_separators(0)
-        document.getElementById("payoff_real").textContent = thousands_separators(15000)
+        document.getElementById("payoff_real1").textContent = thousands_separators(0);
+        document.getElementById("payoff_real").textContent = thousands_separators(15000);
     }
-    var mtd = {{player.t18}}
+    var mtd = {{player.t19}}
     var metode = ""
     if (mtd == 1) {
         metode = "OVO";
