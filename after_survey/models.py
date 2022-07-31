@@ -1,3 +1,4 @@
+from pyexpat import model
 from otree.api import (
     models,
     widgets,
@@ -32,7 +33,7 @@ class Group(BaseGroup):
 
 class Player(BasePlayer):
     s1 = models.IntegerField(choices=[[1,"Ya, bekerja sebagai Wirausahawan"],[2,"Ya, bekerja sebagai Pekerja Paruh Waktu"],[3,"Ya, bekerja sebagai Pegawai Tetap"],[4,"Belum pernah bekerja"]], label="1) Apakah Anda pernah/sedang bekerja ?")
-    s2 = models.IntegerField(choices=[[1,"0 – 3 tahun"],[2,"3 – 6 tahun"],[3,"Lebih dari 6 tahun"]], label="2) Berapa lama masa pengalaman kerja Anda?")
+    s2 = models.IntegerField(choices=[[1,"0 – 3 tahun"],[2,"3 – 6 tahun"],[3,"Lebih dari 6 tahun"]], label="2) Berapa lama masa pengalaman kerja Anda?", blank=True)
     s3 = models.IntegerField(choices=[[1,"Sudah punya"],[2,"Belum punya"]], label="3) Apakah Sudah memiliki NPWP?")
     s4 = models.IntegerField(choices=[[1,"Tidak Berminat"],[2,"Cukup Berminat"],[3,"Berminat"],[4,"Sangat Berminat"]], label="4) Jika belum, seberapa ingin Anda memiliki NPWP", blank=True)
     s5 = models.IntegerField(choices=[[1,"Belum pernah"],[2,"Sudah pernah"]], label="5) Jika sudah punya, apakah pernah Lapor SPT?", blank=True)
@@ -41,7 +42,7 @@ class Player(BasePlayer):
     s8 = models.IntegerField(choices=[[1,"Tidak Mudah"],[2,"Cukup Mudah"],[3,"Mudah"],[4,"Sangat Mudah"]], label="8) Seberapa mudahkah penghitungan pajak dalam penelitian ini?")
     s9 = models.IntegerField(choices=[[1,"Tidak Setuju"],[2,"Cukup Setuju"],[3,"Setuju"],[4,"Sangat Setuju"]], label="9) Seberapa setuju Anda dengan penurunan tarif dari 20% ke 10% di negara Nusa Makmur?")
     s10 = models.IntegerField(choices=[[1,"Tidak Percaya"],[2,"Cukup Percaya"],[3,"Percaya"],[4,"Sangat Percaya"]], label="10) Seberapa besar kepercayaan Anda terhadap otoritas pajak Nusa Makmur terkait dengan perhitungan estimasi prefilled omset yang diterapkan dalam form pelaporan pajak?", blank=True)
-    s11 = models.IntegerField(choices=[[1,"Tidak Perlu"],[2,"Cukup Perlu"],[3,"Perlu"],[4,"Sangat Perlu"]], label="11) Seberapa perlukah penerapan prefilled omset dalam form pelaporan pajak?", blank=True)
+    s11 = models.IntegerField(choices=[[1,"Tidak tahu"],[2,"Tidak Perlu"],[3,"Cukup Perlu"],[4,"Perlu"],[5,"Sangat Perlu"]], label="11) Seberapa perlukah penerapan prefilled omset dalam form pelaporan pajak?", blank=True)
 
     t11 = models.IntegerField(label="1) Umur")
     t12 = models.IntegerField(choices=[[1,'Laki-laki'],[2,'Perempuan']], label='2) Jenis Kelamin')
@@ -53,6 +54,7 @@ class Player(BasePlayer):
     t18 = models.StringField(label="8)	Alamat email alternatif")
     t19 = models.IntegerField(choices=[[1,'OVO'],[2,'GOPAY']], label='9) Metode penerimaan yang diinginkan:')
     t20 = models.IntegerField(choices=[[1,"Tidak Menarik"],[2,"Cukup Menarik"],[3,"Menarik"],[4,"Sangat Menarik"]], label="10) Seberapa menariknya eksperimen ini bagi Anda?")
+    t21 = models.LongStringField(label="11)	Kritik dan saran yang ingin Anda sampaikan")
     
 
     angka_random = models.IntegerField(min=11, max=99, label="2 digit angka")

@@ -15,22 +15,25 @@ class Awal(Page):
             lst_r = [b1,b2,b3,b4,b5]
             x = random.randint(Constants.num_audit,Constants.num_audit_max)
             r_list = []
-            if x <= len(lst_r):
-                r_l = random.sample(range(1,6),x)
-                for i in r_l:
-                    r_list.append(lst_r[i-1][random.randint(0,2)])
-            else:
-                r_l = random.sample(range(1,6),5)
-                for i in r_l:
-                    r_list.append(lst_r[i-1][random.randint(0,2)])
-                loop = True
-                while(loop):
-                    s = random.randint(1,15)
-                    if s not in r_list:
-                        r_list.append(s)
-                        if len(r_list) == x:
-                            loop = False
-
+            # if x <= len(lst_r):
+            #     r_l = random.sample(range(1,6),x)
+            #     for i in r_l:
+            #         r_list.append(lst_r[i-1][random.randint(0,2)])
+            # else:
+            #     r_l = random.sample(range(1,6),5)
+            #     for i in r_l:
+            #         r_list.append(lst_r[i-1][random.randint(0,2)])
+            #     loop = True
+            #     while(loop):
+            #         s = random.randint(1,15)
+            #         if s not in r_list:
+            #             r_list.append(s)
+            #             if len(r_list) == x:
+            #                 loop = False
+            for n in range(1, Constants.num_rounds+1):
+                rnd = random.randint(1,99)
+                if rnd <= 40:
+                    r_list.append(n)
             #r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
             r_list.sort()
             self.participant.vars['audit'] = r_list

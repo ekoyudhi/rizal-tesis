@@ -22,8 +22,8 @@ Kuesioner
 {{ formfield 's9' }}
 {% if treatment != 0 %}
 {{formfield 's10'}}
-{% endif %}
 {{formfield 's11'}}
+{% endif %}
 <br><br>
 <p>Tekan tombol 'Lanjut' untuk masuk ke halaman berikutnya.</p>
 <button class="otree-btn-next btn btn-primary">Lanjut</button>
@@ -36,6 +36,14 @@ Kuesioner
         } else {
             $('#id_s4').removeAttr("disabled");
             $('#id_s5').attr('disabled', 'disabled');
+        }
+    });
+    $('#id_s1').on('change', function(){
+        const selectedPackage = $('#id_s1').val();
+        if (selectedPackage == 4) {
+            $('#id_s2').attr('disabled', 'disabled');
+        } else {
+            $('#id_s2').removeAttr("disabled");
         }
     });
 </script>
