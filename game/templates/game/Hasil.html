@@ -39,9 +39,33 @@
         </td>
     </tr>
 </table>
-    <br><br><br><br><br><br>
+    <br><br><br>
     <p>Tekan tombol 'Lanjut' untuk melanjutkan ke tahap berikutnya.</p>
-    <button class="otree-btn-next btn btn-primary">Lanjut</button>
+    <!-- button class="otree-btn-next btn btn-primary">Lanjut</button-->
+    <!-- Button trigger modal -->
+<button id="btn_lanjut" disabled="disabled" type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+    Lanjut
+  </button>
+  <button id="btn_ok" class="otree-btn-next btn btn-primary invisible"></button>
+  <!-- Modal -->
+  <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Perhatian!!</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            Pastikan Anda telah memahami hasil dari game huruf random.<br>
+            Setelah memilih “Ya” maka Anda tidak dapat kembali ke halaman sebelumnya.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Tidak</button>
+          <button id="btn_ya" type="button" class="otree-btn-next btn btn-success">Ya</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <script>
     function thousands_separators(num)
@@ -59,5 +83,24 @@
     //document.getElementById("laba").textContent = thousands_separators({{player.total_omset}} - {{player.total_biaya}})
     document.getElementById("laba2").textContent = thousands_separators({{player.total_omset}} - {{player.total_biaya}})
 
+    var s = {{wait_seconds}};
+
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+      
+      // If the count down is over, write some text 
+      if (s <= 0) {
+        clearInterval(x);
+        document.getElementById('btn_lanjut').disabled = false;
+        document.getElementById("btn_lanjut").textContent = "Lanjut"
+      } else {
+        document.getElementById("btn_lanjut").textContent = "Lanjut ("+s+")";
+      }
+      s--;
+    }, 1000);
+
+    $("#btn_ya").click(function() {
+      $("#btn_ok").click();
+    });
 </script>
 {% endblock %}

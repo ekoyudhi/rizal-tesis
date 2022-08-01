@@ -126,10 +126,12 @@ class Hasil(Page):
         r = self.round_number
         base_omset = self.participant.vars['base_omset']
         base_biaya = self.participant.vars['base_biaya']
+        wait_seconds = self.session.config['wait_seconds']
         return {'round':r,
                 'base_omset': base_omset,
                 'base_biaya': base_biaya,
-                'tarif_pajak': Constants.tarif_pajak}
+                'tarif_pajak': Constants.tarif_pajak,
+                'wait_seconds': wait_seconds}
     
     def before_next_page(self):
         treatment = self.session.config['treatment']
