@@ -31,8 +31,9 @@ class Awal(Page):
             #             if len(r_list) == x:
             #                 loop = False
             for n in range(1, Constants.num_rounds+1):
-                rnd = random.randint(1,99)
-                if rnd <= 40:
+                rnd = random.randint(20,40)
+                rnd1 = random.randint(1,100)
+                if rnd1 <= rnd:
                     r_list.append(n)
             #r_list = random.sample(range(1,Constants.num_rounds+1),Constants.num_audit)
             r_list.sort()
