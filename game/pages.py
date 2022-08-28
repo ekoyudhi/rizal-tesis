@@ -189,7 +189,8 @@ class Periksapajak(Page):
 
     def is_displayed(self):
         r = list()
-        for x in range(Constants.num_audit):
+        num_audit = self.participant.vars['audit']
+        for x in range(num_audit):
             r.append(self.participant.vars['rand_audit_'+ str(x+1)])
         
         if (self.round_number in r):
